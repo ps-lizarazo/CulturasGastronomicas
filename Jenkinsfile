@@ -31,8 +31,8 @@ pipeline {
                sh('git config --global user.name "ci-isis2603"')
                sh('git add ./reports/index.html')
                sh('git commit -m "[ci-skip] GitInspector report added"')
-               sh('git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW4403-Diseno-y-construccion-de-APIs/${GIT_REPO} master')
-               sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW4403-Diseno-y-construccion-de-APIs/${GIT_REPO} master')
+               sh('git pull https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4104-Web/${GIT_REPO} master')
+               sh('git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/MISW-4104-Web/${GIT_REPO} master')
             }
          }
       }
