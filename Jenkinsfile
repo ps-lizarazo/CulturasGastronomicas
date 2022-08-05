@@ -11,7 +11,7 @@ pipeline {
             scmSkip(deleteBuild: true, skipPattern:'.*\\[ci-skip\\].*')
             git branch: 'master',
             credentialsId: env.GIT_CREDENTIAL_ID,
-            url: 'https://github.com/MISW4403-Diseno-y-construccion-de-APIs/' + env.GIT_REPO
+            url: 'https://github.com/MISW-4104-Web/' + env.GIT_REPO
          }
       }
       stage('Git Analysis') {
