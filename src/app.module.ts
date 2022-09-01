@@ -14,6 +14,7 @@ import { RestauranteModule } from './restaurante/restaurante.module';
 import { EstrellasMichelinModule } from './estrellas_michelin/estrellas_michelin.module';
 import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.entity';
+import { CiudadEntity } from './ciudad/ciudad.entity';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.
         RecetaEntity,
         RestauranteEntity,
         EstrellasMichelinEntity,
+        CiudadEntity,
       ],
       dropSchema: true,
       synchronize: true,
