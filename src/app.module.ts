@@ -10,10 +10,19 @@ import { CategoriaEntity } from './categoria/categoria.entity';
 import { ProductoEntity } from './producto/producto.entity';
 import { CulturaGastronomicaEntity } from './cultura_gastronomica/cultura_gastronomica.entity';
 import { RecetaEntity } from './receta/receta.entity';
+import { RestauranteModule } from './restaurante/restaurante.module';
+import { EstrellasMichelinModule } from './estrellas_michelin/estrellas_michelin.module';
+import { RestauranteEntity } from './restaurante/restaurante.entity';
+import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.entity';
 
 @Module({
   imports: [
-    CategoriaModule, ProductoModule, CulturaGastronomicaModule, RecetaModule,
+    CategoriaModule,
+    ProductoModule,
+    CulturaGastronomicaModule,
+    RecetaModule,
+    RestauranteModule,
+    EstrellasMichelinModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -21,10 +30,17 @@ import { RecetaEntity } from './receta/receta.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'cultura_gastronomica',
-      entities: [CategoriaEntity, ProductoEntity, CulturaGastronomicaEntity, RecetaEntity],
+      entities: [
+        CategoriaEntity,
+        ProductoEntity,
+        CulturaGastronomicaEntity,
+        RecetaEntity,
+        RestauranteEntity,
+        EstrellasMichelinEntity,
+      ],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true
+      keepConnectionAlive: true,
     }),
   ],
   controllers: [AppController],
