@@ -1,7 +1,8 @@
-import { Column, Entity,OneToMany,ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
 import { CategoriaEntity } from 'src/categoria/categoria.entity';
+import { CulturaGastronomicaEntity } from 'src/cultura_gastronomica/cultura_gastronomica.entity';
 
-
+@Entity()
 export class ProductoEntity {
 
   @PrimaryGeneratedColumn('uuid')
@@ -15,4 +16,7 @@ export class ProductoEntity {
 
   @ManyToOne(() => CategoriaEntity, categoria => categoria.productos)
   categoria: CategoriaEntity;
+
+  @ManyToMany(() => CulturaGastronomicaEntity, cultura_gastronomica => cultura_gastronomica.productos)
+  cultura_gastronomicas: CulturaGastronomicaEntity[];
 }
