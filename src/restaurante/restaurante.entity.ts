@@ -6,9 +6,9 @@ import {
   ManyToMany,
   OneToMany,
 } from 'typeorm';
-import { CiudadEntity } from 'src/ciudad/ciudad.entity';
-import { EstrellasMichelinEntity } from 'src/estrellas_michelin/estrellasMichelin.entity';
-import { CulturaGastronomicaEntity } from 'src/cultura_gastronomica/cultura_gastronomica.entity';
+import { CiudadEntity } from '../ciudad/ciudad.entity';
+import { EstrellasMichelinEntity } from '../estrellas_michelin/estrellasMichelin.entity';
+import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 
 @Entity()
 export class RestauranteEntity {

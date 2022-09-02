@@ -1,4 +1,4 @@
-import { RecetaEntity } from 'src/receta/receta.entity';
+import { RecetaEntity } from '../receta/receta.entity';
 import { ProductoEntity } from '../producto/producto.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import {

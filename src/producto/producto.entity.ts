@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
-import { CategoriaEntity } from 'src/categoria/categoria.entity';
-import { CulturaGastronomicaEntity } from 'src/cultura_gastronomica/cultura_gastronomica.entity';
+import { CategoriaEntity } from '../categoria/categoria.entity';
+import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 
 @Entity()
 export class ProductoEntity {
