@@ -15,6 +15,7 @@ import { EstrellasMichelinModule } from './estrellas_michelin/estrellas_michelin
 import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.entity';
 import { CiudadEntity } from './ciudad/ciudad.entity';
+import { PaisModule } from './pais/pais.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { CiudadEntity } from './ciudad/ciudad.entity';
       synchronize: true,
       keepConnectionAlive: true,
     }),
+    PaisModule,
   ],
   controllers: [AppController],
   providers: [AppService],

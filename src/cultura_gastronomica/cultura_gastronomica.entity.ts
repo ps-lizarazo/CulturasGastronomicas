@@ -1,9 +1,11 @@
 import { RecetaEntity } from '../receta/receta.entity';
 import { ProductoEntity } from '../producto/producto.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
+import { PaisEntity } from '../pais/pais.entity';
 import {
   Column,
   Entity,
+  JoinTable,
   ManyToMany,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -34,4 +36,8 @@ export class CulturaGastronomicaEntity {
     (restaurante) => restaurante.culturasGastronomicas,
   )
   restaurantes: RestauranteEntity[];
+
+  @ManyToMany(() => PaisEntity, (pais) => pais.culturasGastronomicas)
+  @JoinTable()
+  paises: PaisEntity[];
 }

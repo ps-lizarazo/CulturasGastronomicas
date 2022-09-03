@@ -6,13 +6,27 @@ import { RecetaEntity } from '../../receta/receta.entity';
 import { RestauranteEntity } from '../../restaurante/restaurante.entity';
 import { EstrellasMichelinEntity } from '../../estrellas_michelin/estrellasMichelin.entity';
 import { CiudadEntity } from '../../ciudad/ciudad.entity';
+import { PaisEntity } from '../../pais/pais.entity';
 
 export const TypeOrmTestingConfig = () => [
- TypeOrmModule.forRoot({
-   type: 'sqlite',
-   database: ':memory:',
-   dropSchema: true,
-   entities: [
+  TypeOrmModule.forRoot({
+    type: 'sqlite',
+    database: ':memory:',
+    dropSchema: true,
+    entities: [
+      CategoriaEntity,
+      ProductoEntity,
+      CulturaGastronomicaEntity,
+      RecetaEntity,
+      RestauranteEntity,
+      EstrellasMichelinEntity,
+      CiudadEntity,
+      PaisEntity,
+    ],
+    synchronize: true,
+    keepConnectionAlive: true,
+  }),
+  TypeOrmModule.forFeature([
     CategoriaEntity,
     ProductoEntity,
     CulturaGastronomicaEntity,
@@ -20,17 +34,6 @@ export const TypeOrmTestingConfig = () => [
     RestauranteEntity,
     EstrellasMichelinEntity,
     CiudadEntity,
-  ],
-   synchronize: true,
-   keepConnectionAlive: true
- }),
- TypeOrmModule.forFeature([
-    CategoriaEntity,
-    ProductoEntity,
-    CulturaGastronomicaEntity,
-    RecetaEntity,
-    RestauranteEntity,
-    EstrellasMichelinEntity,
-    CiudadEntity,
+    PaisEntity,
   ]),
 ];
