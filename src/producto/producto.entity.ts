@@ -17,7 +17,7 @@ export class ProductoEntity {
   @ManyToOne(() => CategoriaEntity, categoria => categoria.productos)
   categoria: CategoriaEntity;
 
-  @ManyToMany(() => CulturaGastronomicaEntity, cultura_gastronomica => cultura_gastronomica.productos)
+  @ManyToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.productos)
   @JoinTable()
-  cultura_gastronomicas: CulturaGastronomicaEntity[];
+  culturasGastronomicas: CulturaGastronomicaEntity[];
 }

@@ -13,14 +13,14 @@ export class RecetaEntity {
     descripcion: string;
 
     @Column()
-    image_url: string;
+    imageUrl: string;
 
     @Column()
     preparacion: string;
 
     @Column()
-    preparacion_url: string;
+    preparacionUrl: string;
 
-    @ManyToOne(() => CulturaGastronomicaEntity, cultura_gastronomica => cultura_gastronomica.recetas)
-    cultura_gastronomica: CulturaGastronomicaEntity;
+    @ManyToOne(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.recetas)
+    culturaGastronomica: CulturaGastronomicaEntity;
 }

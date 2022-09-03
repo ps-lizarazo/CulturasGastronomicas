@@ -20,18 +20,18 @@ export class CulturaGastronomicaEntity {
   @Column()
   descripcion: string;
 
-  @OneToMany(() => RecetaEntity, (receta) => receta.cultura_gastronomica)
+  @OneToMany(() => RecetaEntity, (receta) => receta.culturaGastronomica)
   recetas: RecetaEntity[];
 
   @ManyToMany(
     () => ProductoEntity,
-    (producto) => producto.cultura_gastronomicas,
+    (producto) => producto.culturasGastronomicas,
   )
   productos: ProductoEntity[];
 
   @ManyToMany(
     () => RestauranteEntity,
-    (restaurante) => restaurante.cultura_gastronomicas,
+    (restaurante) => restaurante.culturasGastronomicas,
   )
   restaurantes: RestauranteEntity[];
 }
