@@ -4,6 +4,8 @@ import { BusinessError, BusinessLogicException } from '../shared/errors/business
 import { Repository } from 'typeorm';
 import { RecetaEntity } from './receta.entity';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
+import { check } from 'prettier';
+import { belongsTo } from '../shared/validation_tools/validations';
 
 @Injectable()
 export class RecetaService {
@@ -32,7 +34,7 @@ export class RecetaService {
         if (!receta)
             throw new BusinessLogicException("La receta con el id brindado no ha sido encontrada.", BusinessError.NOT_FOUND);
    
-        if (receta.culturaGastronomica.id != culturaGastronomica.id)
+        if (!belongsTo(receta, culturaGastronomica.recetas))
             throw new BusinessLogicException("La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.", BusinessError.PRECONDITION_FAILED);
 
         return receta;
@@ -57,7 +59,7 @@ export class RecetaService {
         if (!persistedReceta)
             throw new BusinessLogicException("La receta con el id brindado no ha sido encontrada.", BusinessError.NOT_FOUND);
    
-        if (persistedReceta.culturaGastronomica.id != culturaGastronomica.id)
+        if (!belongsTo(receta, culturaGastronomica.recetas))
             throw new BusinessLogicException("La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.", BusinessError.PRECONDITION_FAILED);
 
         return await this.recetaRepository.save({...persistedReceta, ...receta});
@@ -72,7 +74,7 @@ export class RecetaService {
         if (!receta)
             throw new BusinessLogicException("La receta con el id brindado no ha sido encontrada.", BusinessError.NOT_FOUND);
    
-        if (receta.culturaGastronomica.id != culturaGastronomica.id)
+        if (!belongsTo(receta, culturaGastronomica.recetas))
             throw new BusinessLogicException("La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.", BusinessError.PRECONDITION_FAILED);
      
         await this.recetaRepository.remove(receta);
