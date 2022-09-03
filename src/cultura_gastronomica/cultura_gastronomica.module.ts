@@ -1,4 +1,10 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { CulturaGastronomicaEntity } from './cultura_gastronomica.entity';
+import { CulturaGastronomicaService } from './cultura_gastronomica.service';
 
-@Module({})
+@Module({
+  imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity])],
+  providers: [CulturaGastronomicaService]
+})
 export class CulturaGastronomicaModule {}

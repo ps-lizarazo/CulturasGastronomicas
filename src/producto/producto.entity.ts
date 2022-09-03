@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 import { CategoriaEntity } from '../categoria/categoria.entity';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 
@@ -18,5 +18,6 @@ export class ProductoEntity {
   categoria: CategoriaEntity;
 
   @ManyToMany(() => CulturaGastronomicaEntity, cultura_gastronomica => cultura_gastronomica.productos)
+  @JoinTable()
   cultura_gastronomicas: CulturaGastronomicaEntity[];
 }

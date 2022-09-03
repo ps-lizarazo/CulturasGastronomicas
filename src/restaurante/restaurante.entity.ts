@@ -5,6 +5,7 @@ import {
   PrimaryGeneratedColumn,
   ManyToMany,
   OneToMany,
+  JoinTable,
 } from 'typeorm';
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { EstrellasMichelinEntity } from '../estrellas_michelin/estrellasMichelin.entity';
@@ -31,5 +32,6 @@ export class RestauranteEntity {
     () => CulturaGastronomicaEntity,
     (cultura_gastronomica) => cultura_gastronomica.restaurantes,
   )
+  @JoinTable()
   cultura_gastronomicas: CulturaGastronomicaEntity[];
 }
