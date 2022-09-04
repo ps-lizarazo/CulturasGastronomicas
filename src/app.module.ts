@@ -13,7 +13,7 @@ import { RecetaEntity } from './receta/receta.entity';
 import { RestauranteModule } from './restaurante/restaurante.module';
 import { EstrellasMichelinModule } from './estrellas_michelin/estrellas_michelin.module';
 import { RestauranteEntity } from './restaurante/restaurante.entity';
-import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.entity';
+import { EstrellasMichelinEntity } from './estrellas_michelin/estrellas_michelin.entity';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { PaisModule } from './pais/pais.module';
 import { PaisCulturagastronomicaModule } from './pais-culturagastronomica/pais-culturagastronomica.module';

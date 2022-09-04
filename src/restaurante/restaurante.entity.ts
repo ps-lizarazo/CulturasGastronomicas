@@ -8,7 +8,7 @@ import {
   JoinTable,
 } from 'typeorm';
 import { CiudadEntity } from '../ciudad/ciudad.entity';
-import { EstrellasMichelinEntity } from '../estrellas_michelin/estrellasMichelin.entity';
+import { EstrellasMichelinEntity } from '../estrellas_michelin/estrellas_michelin.entity';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 
 @Entity()

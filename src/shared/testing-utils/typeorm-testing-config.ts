@@ -4,7 +4,7 @@ import { ProductoEntity } from '../../producto/producto.entity';
 import { CulturaGastronomicaEntity } from '../../cultura_gastronomica/cultura_gastronomica.entity';
 import { RecetaEntity } from '../../receta/receta.entity';
 import { RestauranteEntity } from '../../restaurante/restaurante.entity';
-import { EstrellasMichelinEntity } from '../../estrellas_michelin/estrellasMichelin.entity';
+import { EstrellasMichelinEntity } from '../../estrellas_michelin/estrellas_michelin.entity';
 import { CiudadEntity } from '../../ciudad/ciudad.entity';
 import { PaisEntity } from '../../pais/pais.entity';
 
