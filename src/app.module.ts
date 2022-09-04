@@ -18,8 +18,10 @@ import { CiudadEntity } from './ciudad/ciudad.entity';
 import { PaisModule } from './pais/pais.module';
 import { PaisCulturagastronomicaModule } from './pais-culturagastronomica/pais-culturagastronomica.module';
 import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante.module';
+import { CategoriaProductoModule } from './categoria-producto/categoria-producto.module';
 import { PaisEntity } from './pais/pais.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
+
 
 @Module({
   imports: [
@@ -54,6 +56,10 @@ import { CiudadModule } from './ciudad/ciudad.module';
       synchronize: true,
       keepConnectionAlive: true,
     }),
+    PaisModule,
+    PaisCulturagastronomicaModule,
+    CiudadRestauranteModule,
+    CategoriaProductoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
