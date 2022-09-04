@@ -35,6 +35,7 @@ import { CiudadModule } from './ciudad/ciudad.module';
     CiudadModule,
     PaisCulturagastronomicaModule,
     CiudadRestauranteModule,
+    CategoriaProductoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -56,10 +57,6 @@ import { CiudadModule } from './ciudad/ciudad.module';
       synchronize: true,
       keepConnectionAlive: true,
     }),
-    PaisModule,
-    PaisCulturagastronomicaModule,
-    CiudadRestauranteModule,
-    CategoriaProductoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
