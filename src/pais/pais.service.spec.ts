@@ -95,7 +95,7 @@ describe('PaisService', () => {
     const paisAlmacenado = paisList[0];
     await service.delete(paisAlmacenado.id);
     const paisEliminado = await repository.findOne({
-      where: { id: paisAlmacenado.id },
+      where: { id: `${paisAlmacenado.id}` },
     });
     expect(paisEliminado).toBeNull();
   });

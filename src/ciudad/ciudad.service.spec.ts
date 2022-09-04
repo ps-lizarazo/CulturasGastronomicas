@@ -77,7 +77,7 @@ describe('CiudadService', () => {
     const ciudadActualizada = await service.update(ciudad.id, ciudad);
     expect(ciudadActualizada).not.toBeNull();
     const ciudadAlmacenada = await repository.findOne({
-      where: { id: ciudad.id },
+      where: { id: `${ciudad.id}` },
     });
 
     expect(ciudadAlmacenada).not.toBeNull();
@@ -102,7 +102,7 @@ describe('CiudadService', () => {
     const ciudadAlmacenada = ciudadList[0];
     await service.delete(ciudadAlmacenada.id);
     const ciudadEliminada = await repository.findOne({
-      where: { id: ciudadAlmacenada.id },
+      where: { id: `${ciudadAlmacenada.id}` },
     });
     expect(ciudadEliminada).toBeNull();
   });

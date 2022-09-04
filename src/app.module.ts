@@ -18,6 +18,8 @@ import { CiudadEntity } from './ciudad/ciudad.entity';
 import { PaisModule } from './pais/pais.module';
 import { PaisCulturagastronomicaModule } from './pais-culturagastronomica/pais-culturagastronomica.module';
 import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante.module';
+import { PaisEntity } from './pais/pais.entity';
+import { CiudadModule } from './ciudad/ciudad.module';
 
 @Module({
   imports: [
@@ -27,6 +29,10 @@ import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante
     RecetaModule,
     RestauranteModule,
     EstrellasMichelinModule,
+    PaisModule,
+    CiudadModule,
+    PaisCulturagastronomicaModule,
+    CiudadRestauranteModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -42,14 +48,12 @@ import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante
         RestauranteEntity,
         EstrellasMichelinEntity,
         CiudadEntity,
+        PaisEntity,
       ],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
     }),
-    PaisModule,
-    PaisCulturagastronomicaModule,
-    CiudadRestauranteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
