@@ -1,29 +1,29 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
-import { PaisEntity } from '../pais/pais.entity';
+import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { PaisCulturagastronomicaService } from './pais-culturagastronomica.service';
+import { RestauranteCulturagastronomicaService } from './restaurante-culturagastronomica.service';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 import { faker } from '@faker-js/faker';
 
-describe('PaisCulturagastronomicaService', () => {
-  let service: PaisCulturagastronomicaService;
-  let paisRepository: Repository<PaisEntity>;
+describe('RestauranteCulturagastronomicaService', () => {
+  let service: RestauranteCulturagastronomicaService;
+  let restauranteRepository: Repository<RestauranteEntity>;
   let culturaGastronomicaRepository: Repository<CulturaGastronomicaEntity>;
-  let pais: PaisEntity;
+  let restaurante: RestauranteEntity;
   let listCulture: CulturaGastronomicaEntity[];
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
-      providers: [PaisCulturagastronomicaService],
+      providers: [RestauranteCulturagastronomicaService],
     }).compile();
 
-    service = module.get<PaisCulturagastronomicaService>(
-      PaisCulturagastronomicaService,
+    service = module.get<RestauranteCulturagastronomicaService>(
+      RestauranteCulturagastronomicaService,
     );
-    paisRepository = module.get(getRepositoryToken(PaisEntity));
+    restauranteRepository = module.get(getRepositoryToken(RestauranteEntity));
     culturaGastronomicaRepository = module.get(
       getRepositoryToken(CulturaGastronomicaEntity),
     );
@@ -32,7 +32,7 @@ describe('PaisCulturagastronomicaService', () => {
   });
 
   const seedDatabase = async () => {
-    paisRepository.clear();
+    restauranteRepository.clear();
     culturaGastronomicaRepository.clear();
 
     //create culturasGastronomicasList
@@ -47,11 +47,9 @@ describe('PaisCulturagastronomicaService', () => {
       listCulture.push(cultura);
     }
 
-    //create pais
-    pais = await paisRepository.save({
-      nombre: 'pais',
-      descripcion: 'descripcion',
-      imagen: 'imagen',
+    //create restaurante
+    restaurante = await restauranteRepository.save({
+      nombre: 'restaurante',
       culturasGastronomicas: listCulture,
     });
   };
@@ -67,12 +65,12 @@ describe('PaisCulturagastronomicaService', () => {
       imagen: faker.image.imageUrl(),
     });
 
-    const pais = await paisRepository.save({
-      nombre: faker.address.country(),
+    const restaurante = await restauranteRepository.save({
+      nombre: faker.lorem.sentence(),
     });
 
-    const result = await service.associateCulturaGastronomicaPais(
-      pais.id,
+    const result = await service.associateCulturaGastronomicaRestaurante(
+      restaurante.id,
       culture.id,
     );
 
@@ -86,12 +84,15 @@ describe('PaisCulturagastronomicaService', () => {
   });
 
   it('associate should thow an error for an invalid CultureGastronomica', async () => {
-    const pais = await paisRepository.save({
-      nombre: faker.address.country(),
+    const restaurante = await restauranteRepository.save({
+      nombre: faker.lorem.sentence(),
     });
 
     try {
-      await service.associateCulturaGastronomicaPais(pais.id, '999999');
+      await service.associateCulturaGastronomicaRestaurante(
+        restaurante.id,
+        '999999',
+      );
     } catch (error) {
       expect(error.message).toBe(
         'La cultura gastronomica con el id dado no existe',
@@ -99,7 +100,7 @@ describe('PaisCulturagastronomicaService', () => {
     }
   });
 
-  it('associate should thow an error for an invalid Pais', async () => {
+  it('associate should thow an error for an invalid Restaurante', async () => {
     const culture = await culturaGastronomicaRepository.save({
       nombre: faker.company.name(),
       descripcion: faker.lorem.sentence(),
@@ -107,16 +108,19 @@ describe('PaisCulturagastronomicaService', () => {
     });
 
     try {
-      await service.associateCulturaGastronomicaPais('999999', culture.id);
+      await service.associateCulturaGastronomicaRestaurante(
+        '999999',
+        culture.id,
+      );
     } catch (error) {
-      expect(error.message).toBe('El pais con el id dado no existe');
+      expect(error.message).toBe('El restaurante con el id dado no existe');
     }
   });
 
-  it('should findCulturaGastronomicaInPais', async () => {
+  it('should findCulturaGastronomicaInRestaurante', async () => {
     const cultura: CulturaGastronomicaEntity = listCulture[0];
-    const storedCulture = await service.findCulturaGastronomicaInPais(
-      pais.id,
+    const storedCulture = await service.findCulturaGastronomicaInRestaurante(
+      restaurante.id,
       cultura.id,
     );
 
@@ -126,19 +130,22 @@ describe('PaisCulturagastronomicaService', () => {
     expect(storedCulture.descripcion).toBe(cultura.descripcion);
   });
 
-  it('should findCulturaGastronomicaInPais throw an error for an invalid pais', async () => {
+  it('should findCulturaGastronomicaInRestaurante throw an error for an invalid restaurante', async () => {
     const cultura: CulturaGastronomicaEntity = listCulture[0];
 
     try {
-      await service.findCulturaGastronomicaInPais('999999', cultura.id);
+      await service.findCulturaGastronomicaInRestaurante('999999', cultura.id);
     } catch (error) {
-      expect(error.message).toBe('El pais con el id dado no existe');
+      expect(error.message).toBe('El restaurante con el id dado no existe');
     }
   });
 
-  it('should findCulturaGastronomicaInPais throw an error for an invalid cultura', async () => {
+  it('should findCulturaGastronomicaInRestaurante throw an error for an invalid cultura', async () => {
     try {
-      await service.findCulturaGastronomicaInPais(pais.id, '999999');
+      await service.findCulturaGastronomicaInRestaurante(
+        restaurante.id,
+        '999999',
+      );
     } catch (error) {
       expect(error.message).toBe(
         'La cultura gastronomica con el id dado no existe',
@@ -146,7 +153,7 @@ describe('PaisCulturagastronomicaService', () => {
     }
   });
 
-  it('should findCulturaGastronomicaInPais throw an error for a cultura not associated to pais', async () => {
+  it('should findCulturaGastronomicaInRestaurante throw an error for a cultura not associated to restaurante', async () => {
     const cultura: CulturaGastronomicaEntity =
       await culturaGastronomicaRepository.save({
         nombre: faker.company.name(),
@@ -155,35 +162,47 @@ describe('PaisCulturagastronomicaService', () => {
       });
 
     try {
-      await service.findCulturaGastronomicaInPais(pais.id, cultura.id);
+      await service.findCulturaGastronomicaInRestaurante(
+        restaurante.id,
+        cultura.id,
+      );
     } catch (error) {
       expect(error.message).toBe(
-        'La cultura gastronomica con el id dado no esta asociada al pais',
+        'La cultura gastronomica con el id dado no esta asociada al restaurante',
       );
     }
   });
 
-  it('should findAllCulturasGastronomicasInPais', async () => {
-    const storedCulturas = await service.findCulturasGastronomicasInPais(
-      pais.id,
+  it('should findAllCulturasGastronomicasInRestaurante', async () => {
+    const storedCulturas = await service.findCulturasGastronomicasInRestaurante(
+      restaurante.id,
+    );
+
+    const storedCultura = storedCulturas.find(
+      (storedCultura) => storedCultura.nombre === 'cultura0',
+    );
+
+    const itemCulture = listCulture.find(
+      (itemCulture) => itemCulture.nombre === 'cultura0',
     );
 
     expect(storedCulturas.length).toBe(listCulture.length);
-    expect(storedCulturas[0].id).toBe(listCulture[0].id);
-    expect(storedCulturas[0].nombre).toBe(listCulture[0].nombre);
-    expect(storedCulturas[0].descripcion).toBe(listCulture[0].descripcion);
+    expect(storedCultura.id).toBe(itemCulture.id);
+    expect(storedCultura.nombre).toBe(itemCulture.nombre);
+    expect(storedCultura.descripcion).toBe(itemCulture.descripcion);
   });
 
-  it('should associateCulturasGastronomicasPais update the list of cultures gastronomicas', async () => {
+  it('should associateCulturasGastronomicasRestaurante update the list of cultures gastronomicas', async () => {
     const newCulture = await culturaGastronomicaRepository.save({
       nombre: faker.company.name(),
       descripcion: faker.lorem.sentence(),
       imagen: faker.image.imageUrl(),
     });
 
-    const result = await service.associateCulturasGastronomicasPais(pais.id, [
-      newCulture,
-    ]);
+    const result = await service.associateCulturasGastronomicasRestaurante(
+      restaurante.id,
+      [newCulture],
+    );
 
     expect(result.culturasGastronomicas.length).toBe(1);
     expect(result.culturasGastronomicas[0].id).toBe(newCulture.id);
@@ -193,7 +212,7 @@ describe('PaisCulturagastronomicaService', () => {
     );
   });
 
-  it('should associateCulturasGastronomicasPais throw an error for an invalid pais', async () => {
+  it('should associateCulturasGastronomicasRestaurante throw an error for an invalid restaurante', async () => {
     const newCulture = await culturaGastronomicaRepository.save({
       nombre: faker.company.name(),
       descripcion: faker.lorem.sentence(),
@@ -201,17 +220,21 @@ describe('PaisCulturagastronomicaService', () => {
     });
 
     try {
-      await service.associateCulturasGastronomicasPais('999999', [newCulture]);
+      await service.associateCulturasGastronomicasRestaurante('999999', [
+        newCulture,
+      ]);
     } catch (error) {
-      expect(error.message).toBe('El pais con el id dado no existe');
+      expect(error.message).toBe('El restaurante con el id dado no existe');
     }
   });
 
-  it('should associateCulturasGastronomicasPais throw an error for an invalid cultura', async () => {
+  it('should associateCulturasGastronomicasRestaurante throw an error for an invalid cultura', async () => {
     const cultura = listCulture[0];
     cultura.id = '999999';
     try {
-      await service.associateCulturasGastronomicasPais(pais.id, [cultura]);
+      await service.associateCulturasGastronomicasRestaurante(restaurante.id, [
+        cultura,
+      ]);
     } catch (error) {
       expect(error.message).toBe(
         'La cultura gastronomica con el id dado no existe',
@@ -219,33 +242,42 @@ describe('PaisCulturagastronomicaService', () => {
     }
   });
 
-  it('dissociateCulturaGastronomicaPais should dissociate a cultura gastronomica from a pais', async () => {
+  it('dissociateCulturaGastronomicaRestaurante should dissociate a cultura gastronomica from a restaurante', async () => {
     const cultura = listCulture[0];
-    await service.dissociateCulturaGastronomicaPais(pais.id, cultura.id);
+    await service.dissociateCulturaGastronomicaRestaurante(
+      restaurante.id,
+      cultura.id,
+    );
 
-    const storedPais = await paisRepository.findOne({
-      where: { id: `${pais.id}` },
+    const storedRestaurante = await restauranteRepository.findOne({
+      where: { id: `${restaurante.id}` },
       relations: ['culturasGastronomicas'],
     });
-    const deletedCulture = storedPais.culturasGastronomicas.find(
+    const deletedCulture = storedRestaurante.culturasGastronomicas.find(
       (c) => c.id === cultura.id,
     );
 
     expect(deletedCulture).toBeUndefined();
   });
 
-  it('dissociateCulturaGastronomicaPais should throw an error for an invalid pais', async () => {
+  it('dissociateCulturaGastronomicaRestaurante should throw an error for an invalid restaurante', async () => {
     const cultura = listCulture[0];
     try {
-      await service.dissociateCulturaGastronomicaPais('999999', cultura.id);
+      await service.dissociateCulturaGastronomicaRestaurante(
+        '999999',
+        cultura.id,
+      );
     } catch (error) {
-      expect(error.message).toBe('El pais con el id dado no existe');
+      expect(error.message).toBe('El restaurante con el id dado no existe');
     }
   });
 
-  it('dissociateCulturaGastronomicaPais should throw an error for an invalid cultura', async () => {
+  it('dissociateCulturaGastronomicaRestaurante should throw an error for an invalid cultura', async () => {
     try {
-      await service.dissociateCulturaGastronomicaPais(pais.id, '999999');
+      await service.dissociateCulturaGastronomicaRestaurante(
+        restaurante.id,
+        '999999',
+      );
     } catch (error) {
       expect(error.message).toBe(
         'La cultura gastronomica con el id dado no existe',
@@ -253,7 +285,7 @@ describe('PaisCulturagastronomicaService', () => {
     }
   });
 
-  it('dissociateCulturaGastronomicaPais should throw an error for a cultura not associated to pais', async () => {
+  it('dissociateCulturaGastronomicaRestaurante should throw an error for a cultura not associated to restaurant', async () => {
     const cultura: CulturaGastronomicaEntity =
       await culturaGastronomicaRepository.save({
         nombre: faker.company.name(),
@@ -262,10 +294,13 @@ describe('PaisCulturagastronomicaService', () => {
       });
 
     try {
-      await service.dissociateCulturaGastronomicaPais(pais.id, cultura.id);
+      await service.dissociateCulturaGastronomicaRestaurante(
+        restaurante.id,
+        cultura.id,
+      );
     } catch (error) {
       expect(error.message).toBe(
-        'La cultura gastronomica con el id dado no esta asociada al pais',
+        'La cultura gastronomica con el id dado no esta asociada al restaurante',
       );
     }
   });

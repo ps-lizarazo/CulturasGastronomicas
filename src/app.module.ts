@@ -21,7 +21,7 @@ import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante
 import { CategoriaProductoModule } from './categoria-producto/categoria-producto.module';
 import { PaisEntity } from './pais/pais.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
-
+import { RestauranteCulturagastronomicaModule } from './restaurante-culturagastronomica/restaurante-culturagastronomica.module';
 
 @Module({
   imports: [
@@ -34,6 +34,7 @@ import { CiudadModule } from './ciudad/ciudad.module';
     PaisModule,
     CiudadModule,
     PaisCulturagastronomicaModule,
+    RestauranteCulturagastronomicaModule,
     CiudadRestauranteModule,
     CategoriaProductoModule,
     TypeOrmModule.forRoot({
