@@ -16,6 +16,8 @@ import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { EstrellasMichelinEntity } from './estrellas_michelin/estrellasMichelin.entity';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { PaisModule } from './pais/pais.module';
+import { PaisCulturagastronomicaModule } from './pais-culturagastronomica/pais-culturagastronomica.module';
+import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante.module';
 
 @Module({
   imports: [
@@ -46,6 +48,8 @@ import { PaisModule } from './pais/pais.module';
       keepConnectionAlive: true,
     }),
     PaisModule,
+    PaisCulturagastronomicaModule,
+    CiudadRestauranteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
