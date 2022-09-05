@@ -22,6 +22,7 @@ import { CategoriaProductoModule } from './categoria-producto/categoria-producto
 import { PaisEntity } from './pais/pais.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { RestauranteCulturagastronomicaModule } from './restaurante-culturagastronomica/restaurante-culturagastronomica.module';
+import { RecetaCulturaGastronomicaModule } from './receta-cultura_gastronomica/receta-cultura_gastronomica.module';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ import { RestauranteCulturagastronomicaModule } from './restaurante-culturagastr
       synchronize: true,
       keepConnectionAlive: true,
     }),
+    RecetaCulturaGastronomicaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
