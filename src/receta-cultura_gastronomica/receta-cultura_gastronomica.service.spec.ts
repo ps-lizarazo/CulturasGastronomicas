@@ -77,7 +77,7 @@ describe('RecetaCulturaGastronomicaService', () => {
   });
 
   it('addRecetaCulturaGastronomica debe lanzar una execpcion debido a una receta inexistente', async () => {
-    await expect(() => service.addRecetaCulturaGastronomica(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "No se encontro la receta con el id suministrado");
+    await expect(() => service.addRecetaCulturaGastronomica(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "La receta con el id brindado no ha sido encontrada.");
   });
 
   it('addRecetaCulturaGastronomica Debe agregar una exepcion por una cultura gastronómica invalida', async () => {
@@ -90,7 +90,7 @@ describe('RecetaCulturaGastronomicaService', () => {
       culturaGastronomica: null
     });
 
-    await expect(() => service.addRecetaCulturaGastronomica("0", newReceta.id)).rejects.toHaveProperty("message", "No se encontro la cultura gastronómica con el id suministrado");
+    await expect(() => service.addRecetaCulturaGastronomica("0", newReceta.id)).rejects.toHaveProperty("message", "La cultura gastronómica con el id brindado no ha sido encontrada.");
   });
 
   it('findRecetaByCulturaGastronomicaIdRecetaId debe retornar una receta por id de cultura gastronómica y id de receta', async () => {
@@ -110,12 +110,12 @@ describe('RecetaCulturaGastronomicaService', () => {
   });
 
   it('findRecetaByCulturaGastronomicaIdRecetaId debe lanzar una excepcion por una receta invalida', async () => {
-    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "No se encontro la receta con el id suministrado");
+    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "La receta con el id brindado no ha sido encontrada.");
   });
 
   it('findRecetaByCulturaGastronomicaIdRecetaId  Debe agregar una execpcion por una categoria invalida', async () => {
     const receta: RecetaEntity = recetaList[0];
-    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId("0", receta.id)).rejects.toHaveProperty("message", "No se encontro la cultura gastronómica con el id suministrado");
+    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId("0", receta.id)).rejects.toHaveProperty("message", "La cultura gastronómica con el id brindado no ha sido encontrada.");
   });
 
   it('findRecetaByCulturaGastronomicaIdRecetaId Debe lanzar una escepcion para un producto no asociado a la cultura gastronómica', async () => {
@@ -127,7 +127,7 @@ describe('RecetaCulturaGastronomicaService', () => {
       restaurantes: []
     });
 
-    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId(otherCulturaGastronomica.id, recetaList[0].id)).rejects.toHaveProperty("message", "La receta con el id suministrado no esta asociado a la cultura gastronómica");
+    await expect(() => service.findRecetaByCulturaGastronomicaIdRecetaId(otherCulturaGastronomica.id, recetaList[0].id)).rejects.toHaveProperty("message", "La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.");
   });
 
   it('findRecetasByCulturaGastronomicaId Debe retornar las recetas por cultura gastronómica', async () => {
@@ -136,7 +136,7 @@ describe('RecetaCulturaGastronomicaService', () => {
   });
 
   it('findRecetasByCulturaGastronomicaId  Debe agregar una execpcion por una cultura gastronómica invalida', async () => {
-    await expect(() => service.findRecetasByCulturaGastronomicaId("0")).rejects.toHaveProperty("message", "No se encontro la cultura gastronómica con el id suministrado");
+    await expect(() => service.findRecetasByCulturaGastronomicaId("0")).rejects.toHaveProperty("message", "La cultura gastronómica con el id brindado no ha sido encontrada.");
   });
 
   it('associateRecetasCulturaGastronomica Debe actualizar la lista de productos para una categoria', async () => {
@@ -166,14 +166,14 @@ describe('RecetaCulturaGastronomicaService', () => {
       culturaGastronomica: culturaGastronomica
     });
 
-    await expect(() => service.associateRecetasCulturaGastronomica("0", [newReceta])).rejects.toHaveProperty("message", "No se encontro la cultura gastronómica con el id suministrado");
+    await expect(() => service.associateRecetasCulturaGastronomica("0", [newReceta])).rejects.toHaveProperty("message", "La cultura gastronómica con el id brindado no ha sido encontrada.");
   });
 
   it('associateRecetasCulturaGastronomica Debe lanzar una execpcion para una receta no valida', async () => {
     const newReceta: RecetaEntity = recetaList[0];
     newReceta.id = "0";
 
-    await expect(() => service.associateRecetasCulturaGastronomica(culturaGastronomica.id, [newReceta])).rejects.toHaveProperty("message", "No se encontro la receta con el id suministrado");
+    await expect(() => service.associateRecetasCulturaGastronomica(culturaGastronomica.id, [newReceta])).rejects.toHaveProperty("message", "La receta con el id brindado no ha sido encontrada.");
   });
 
   it('deleteRecetaCulturaGastronomica Debe remover la receta de una cultura gastronómica', async () => {
@@ -188,12 +188,12 @@ describe('RecetaCulturaGastronomicaService', () => {
   });
 
   it('deleteRecetaCulturaGastronomica Debe lanzar una execpcion para un receta no valida', async () => {
-    await expect(() => service.deleteRecetaCulturaGastronomica(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "No se encontro la receta con el id suministrado");
+    await expect(() => service.deleteRecetaCulturaGastronomica(culturaGastronomica.id, "0")).rejects.toHaveProperty("message", "La receta con el id brindado no ha sido encontrada.");
   });
 
   it('deleteRecetaCulturaGastronomica Debe lanzar una execpcion para una cultura gastronómica no valida', async () => {
     const receta: RecetaEntity = recetaList[0];
-    await expect(() => service.deleteRecetaCulturaGastronomica("0", receta.id)).rejects.toHaveProperty("message", "No se encontro la cultura gastronómica con el id suministrado");
+    await expect(() => service.deleteRecetaCulturaGastronomica("0", receta.id)).rejects.toHaveProperty("message", "La cultura gastronómica con el id brindado no ha sido encontrada.");
   });
 
   it('deleteRecetaCulturaGastronomica Debe lanzar una excepcion para un producto no asociado', async () => {
@@ -205,6 +205,6 @@ describe('RecetaCulturaGastronomicaService', () => {
       restaurantes: []
     });
 
-    await expect(() => service.deleteRecetaCulturaGastronomica(otherCulturaGastronomica.id, recetaList[0].id)).rejects.toHaveProperty("message", "La receta con el id suministrado no esta asociado a la cultura gastronómica");
+    await expect(() => service.deleteRecetaCulturaGastronomica(otherCulturaGastronomica.id, recetaList[0].id)).rejects.toHaveProperty("message", "La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.");
   });
 });

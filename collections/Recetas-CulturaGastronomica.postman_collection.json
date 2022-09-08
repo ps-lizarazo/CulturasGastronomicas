@@ -1,0 +1,1372 @@
+{
+	"info": {
+		"_postman_id": "e6addecb-9c5f-441f-9dcf-44a4e6fdee37",
+		"name": "Recetas-CulturaGastronomica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22955676"
+	},
+	"item": [
+		{
+			"name": "Crear cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"console.log(data)",
+							"pm.globals.set(\"idCulturaGastronomica\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas"
+					]
+				},
+				"description": "Crea una nueva cultura gastrónomica en el sistema. Retorna la cultura gastronómica creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"paises\": [],\n    \"productos\": [],\n    \"recetas\": [],\n    \"restaurantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear receta 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"idReceta1\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				},
+				"description": "Crea una receta en el sistema. Retorna la receta creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear receta 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null,\n    \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear receta 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"idReceta2\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				},
+				"description": "Crea una receta en el sistema. Retorna la receta creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear receta 2",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null,\n    \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir receta a cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"{{idReceta1}}"
+					]
+				},
+				"description": "Crea la receta a la cultura gastronómica indicada con el id. Retorna la información de la receta, incluyendo el id que le fue asignado y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Añadir receta a cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"{{idReceta1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"8809431f-783e-4082-96c5-b45d58e212c2\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"recetas\": [\n        {\n            \"id\": \"b33e33df-75c8-4672-a997-5db2c980d17b\",\n            \"nombre\": \"Ajoblanco\",\n            \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n            \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n            \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n            \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir receta inexistente a cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Crea la receta a la cultura gastronómica indicada con el id. Retorna la información de la receta, incluyendo el id que le fue asignado y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Añadir receta inexistente a cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Arroz con pollo a la ecuatoriana\",\n    \"descripcion\": \"La receta de arroz y pollo ecuatoriana se acompaña con plátano frito. Es un plato simple y muy nutritivo.\",\n    \"image\": \"https://www.cocina-ecuatoriana.com/base/stock/Recipe/231-image/231-image_web.jpg\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=WuxYBBOUdRo\",\n    \"preparacion\": \"Tomar las pechugas de pollo y condimentar con una mezcla realizada con todas las especias de la lista.\\nColocar el pollo con la piel hacia abajo en una sartén con aceite caliente y cocinar hasta dorar.\\nAgregar a la cacerola la cebolla, los tomates, el morrón y cocinar por unos 15 minutos.\\nAgregar el vino blanco y cocinar  hasta que el líquido se reduzca a la mitad.\\nAñadir ahora el agua con el arroz, los frijoles y las zanahorias y cocinar a fuego medio hasta que el arroz se haya cocido. \\nServir el arroz con pollo acompañado con plátano maduro frito.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Añadir receta a cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas/{{idReceta1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000",
+						"recetas",
+						"{{idReceta1}}"
+					]
+				},
+				"description": "Crea la receta a la cultura gastronómica indicada con el id. Retorna la información de la receta, incluyendo el id que le fue asignado y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Añadir receta inexistente a cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"{{idReceta1}}"
+					]
+				},
+				"description": "Retorna la información de la receta indicada con el id, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta de cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"{{idReceta1}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"8e1da05a-369e-42c7-8151-fd012d327b7b\",\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta inexistente de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Retorna la información de la receta indicada con el id, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta inexistente de cultura gastronómica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta de cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas/{{idReceta1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000",
+						"recetas",
+						"{{idReceta1}}"
+					]
+				},
+				"description": "Retorna la información de la receta indicada con el id, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta de cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas/{{idReceta1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000",
+								"recetas",
+								"{{idReceta1}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta que no pertenece a la cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"{{idReceta2}}"
+					]
+				},
+				"description": "Retorna la información de la receta indicada con el id, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta que no pertenece a la cultura gastronómica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"{{idReceta2}}"
+							]
+						}
+					},
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar recetas de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas"
+					]
+				},
+				"description": "Retorna las recetas de la cultura gastronómica indicada con el id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Listar recetas de cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"d2f3b814-4f59-4c76-a4cb-ac468ab1c045\",\n        \"nombre\": \"Ajoblanco\",\n        \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n        \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n        \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n        \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Listar recetas de cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000",
+						"recetas"
+					]
+				},
+				"description": "Retorna las recetas de la cultura gastronómica indicada con el id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Listar recetas de cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000",
+								"recetas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar receta de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n   {\n       \"id\": \"{{idReceta2}}\"\n   }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas"
+					]
+				},
+				"description": "Edita la información de la receta indicada con el id. Retorna la información modificada de dicha receta, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar receta de cultura gastronómica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n   {\n       \"id\": \"{{idReceta2}}\"\n   }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"7fa41f65-2701-46f9-a0b7-755b30a36ca6\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"recetas\": [\n        {\n            \"id\": \"c6d0c53a-7b55-46ba-a1be-9fc3e865e99f\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar receta inexistente de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas"
+					]
+				},
+				"description": "Edita la información de la receta indicada con el id. Retorna la información modificada de dicha receta, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar receta inexistente de cultura gastronómica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n   {\n       \"id\": \"00000000-0000-0000-0000-000000000000\"\n   }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar receta de cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n   {\n       \"id\": \"{{idReceta2}}\"\n   }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000",
+						"recetas"
+					]
+				},
+				"description": "Edita la información de la receta indicada con el id. Retorna la información modificada de dicha receta, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar receta de cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n   {\n       \"id\": \"{{idReceta2}}\"\n   }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000",
+								"recetas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"{{idReceta2}}"
+					]
+				},
+				"description": "Elimina la receta indicada con el id. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta de cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"{{idReceta2}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta inexistente de cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Elimina la receta indicada con el id. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta inexistente de cultura gastronómica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta de cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas/{{idReceta2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000",
+						"recetas",
+						"{{idReceta2}}"
+					]
+				},
+				"description": "Elimina la receta indicada con el id. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta de cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000/recetas/{{idReceta2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000",
+								"recetas",
+								"{{idReceta2}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta que no pertenece a la cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}",
+						"recetas",
+						"{{idReceta1}}"
+					]
+				},
+				"description": "Elimina la receta indicada con el id. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica o receta con los id's dados, se retorna el código 404 con el mensaje correspondiente. En caso la receta no pertenezca a la cultura gastronómica, retornará el código 412 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta que no pertenece a la cultura gastronómica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}/recetas/{{idReceta1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}",
+								"recetas",
+								"{{idReceta1}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La receta con el id brindado no pertenece a la cultura gastrónomica dada por su id.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

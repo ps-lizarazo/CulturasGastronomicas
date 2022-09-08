@@ -6,7 +6,7 @@ import { RecetaEntity } from './receta.entity';
 import { RecetaDto } from './receta.dto';
 
 @UseInterceptors(BusinessErrorsInterceptor)
-@Controller('receta')
+@Controller('recetas')
 export class RecetaController {
     constructor(private readonly recetaService: RecetaService) { }
 

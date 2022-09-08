@@ -1,0 +1,573 @@
+{
+	"info": {
+		"_postman_id": "a533b5a8-d4f3-47de-8327-7a999c43bd82",
+		"name": "CulturasGastronomicas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22955676"
+	},
+	"item": [
+		{
+			"name": "Crear cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"console.log(data)",
+							"pm.globals.set(\"idCulturaGastronomica\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas"
+					]
+				},
+				"description": "Crea una nueva cultura gastrónomica en el sistema. Retorna la cultura gastronómica creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"paises\": [],\n    \"productos\": [],\n    \"recetas\": [],\n    \"restaurantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar culturas gastronómicas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of culturas gastronómicas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas"
+					]
+				},
+				"description": "Retorna las culturas gastrónomicas que se encuentran en el sistema, incluyendo sus detalles."
+			},
+			"response": [
+				{
+					"name": "Listar culturas gastronómicas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n   {\n       \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n       \"nombre\": \"Mediterránea\",\n       \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n       \"paises\": [\n           {\n               \"id\": \"48a9ab90-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Grecia\"\n           },\n           {\n               \"id\": \"48a9ab90-1276-11ed-861d-3242ac1200234\",\n               \"nombre\": \"Italia\"\n           }\n       ],\n       \"productos\": [\n           {\n               \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Aceite de oliva\",\n               \"categoria\": \"Aceites\"\n           },\n           {\n               \"id\": \"89832333-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Zanahoria\",\n               \"categoria\": \"Verduras\"\n           }\n       ],\n       \"recetas\": [\n           {\n               \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Ajoblanco\",\n               \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n               \"image\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n               \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n               \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n               \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n           },\n           {\n               \"id\": \"987689he-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Dorada al ajillo\",\n               \"descripcion\": \"es una receta con muy pocos ingredientes y todos ellos de los que solemos tener en la despensa así que, para preparar este plato, solo necesitamos una buena dorada. El secreto del éxito de este plato está en conseguir que la dorada nos quede en su punto óptimo de cocción. Para ello, es importante que la plancha o la sartén donde la vayamos a cocinar esté muy caliente, para que se forme una primera costra inicial al poner la dorada en la plancha y que no se pierdan los jugos del pescado. Como siempre, no debemos cocinar la dorada en exceso para que no se seque. Con estas premisas y la guarnición que más nos guste, tendremos un plato ligero y sabroso.\",\n               \"image\": \"https://imag.bonviveur.com/dorada-al-ajillo.webp\",\n               \"preparacionUrl\": \"https://www.youtube.com/watch?v=R3i6OHXsVjA\",\n               \"preparacion\": \"Picamos el ajo y el perejil\\nLos mezclamos con el aceite en un bol y lo dejamos macerar\\nCalentamos la plancha, la pincelamos con aceite, colocamos los filetes de dorada con la piel hacia arriba. La salamos y le añadimos un poco del aceite de ajo y perejil\\nDejamos que se cocine unos minutos y le damos la vuelta\\nLe echamos un poco más de aceite aromatizado\\nCuando esté hecha, la retiramos para una fuente\\nLa rehogamos con el aliño y la servimos calentita\",\n               \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n           }\n       ],\n       \"restaurantes\": [\n           {\n               \"id\": \"14f05fgfd0e-1275-11ed-861d-0242ac120032\",\n               \"nombre\": \"MediRest\",\n               \"pais\": \"España\",\n               \"ciudad\": \"Valencia\",\n               \"estrellasMichelin\": [\n                   {\n                       \"id\": \"14f05fgfd0e-2233-11ed-861d-0242ac120032\",\n                       \"fechaConsecucion\": \"2014-07-22\"\n                   }\n               ]\n           },{}\n       ]\n   },\n   {\n       \"id\": \"48a9ab90-1276-11ed-861d-0242ac120656\",\n       \"nombre\": \"Peruana\",\n       \"descripcion\": \"La gastronomía peruana es el conjunto de platillos y técnicas culinarias del Perú que forman parte de las tradiciones y vida común de sus habitantes, resultado de la fusión de la tradición culinaria del antiguo Perú con la gastronomía europea y otras.\",\n       \"paises\": [\n           {\n               \"id\": \"48a9ab90-1276-11ed-9876-3242ac120002\",\n               \"nombre\": \"Perú\"\n           }\n       ],\n       \"productos\": [\n           {\n               \"id\": \"3339ab90-9876-11ed-861d-3242ac120002\",\n               \"nombre\": \"Ají\",\n               \"categoria\": \"Ingredientes\"\n           },\n           {\n               \"id\": \"98764567-1276-11ed-861d-3242ac120002\",\n               \"nombre\": \"Papa\",\n               \"categoria\": \"Tubérculos\"\n           }\n       ],\n       \"recetas\": [\n           {\n               \"id\": \"3339ab90-1276-11ed-861d-3242ac144455\",\n               \"nombre\": \"Ceviche de conchitas\",\n               \"descripcion\": \"Este TIENE que ser hecho con las conchitas más frescas que puedas encontrar en el mercado. Ni se te ocurra usar mariscos congelados para este plato.\",\n               \"image\": \"https://www.perudelights.com/wp-content/uploads/2017/01/cebiche-de-conchitas.-2.jpg\",\n               \"preparacionUrl\": \"https://www.youtube.com/watch?v=kmp8yX37MT4\",\n               \"preparacion\": \"Combina las conchitas con la cebolla, ají limo y perejil en un tazón. Agrega el ajo, sal y pimienta, revolviendo bien.\\nIncorpora el jugo de limón y aceite de oliva. Deja reposar por un máximo de cinco minutos.\\nSirve en dos platos. Coloca las hojas de lechuga y pon camote y choclo.\\nEncima de las conchitas pon un poquito de yuyos y sirve de inmediato.\",\n               \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120656\"\n           },\n           {\n               \"id\": \"987689he-1276-11ed-861d-456378juji\",\n               \"nombre\": \"Arroz Con Conchas Negras\",\n               \"descripcion\": \"A los habitantes del norte de Perú les encanta comer conchas negras, abundantes en la zona cercana al Ecuador. Estas son famosas no solo por su sabor sino porque se consideran poderosos afrodisíacos. Normalmente se consumen crudas y directamente de la valva, con los jugos y todo. Los chefs están creando muchas recetas sofisticadas para disfrutarlas también en restaurantes de mantel blanco.\",\n               \"image\": \"https://imag.bonviveur.com/dorada-al-ajillo.webp\",\n               \"preparacionUrl\": \"https://www.youtube.com/watch?v=Gwp5VqxkEuI\",\n               \"preparacion\": \"Abre las conchas negras y retira la carne de las valvas, reserva el jugo.\\nCalienta el aceite en una sartén, sofríe el ajo y el jengibre pero no dejes que se quemen.\\nAgrega los pimientos y las cebollitas chinas, revolviendo bien por 5 minutos. Agrega las conchas negras-.\\nIncorpora el arroz y mezcla bien. Finalmente añade el jugo de las conchas negras con el aceite de ajonjolí y la salsa de soya. Prueba la sazón, salpimienta a gusto.\\nSirve en dos platos con chifles y salsa criolla. Puedes poner mitades de limón.\",\n               \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120656\"\n           }\n       ],\n       \"restaurantes\": [\n           {\n               \"id\": \"14f05fgfd0e-1275-11ed-861d-465hgy78231\",\n               \"nombre\": \"Gastón\",\n               \"pais\": \"España\",\n               \"ciudad\": \"Barcelona\",\n               \"estrellasMichelin\": [\n                   {\n                       \"id\": \"14f05fgfd0e-2233-11ed-8972-0242ac120032\",\n                       \"fechaConsecucion\": \"2018-07-14\"\n                   }\n               ]\n           }\n       ]\n   }\n]"
+				}
+			]
+		},
+		{
+			"name": "Consultar cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				},
+				"description": "Retorna la información a detalle de la cultura gastronómica solicitada con el id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"paises\": [\n        {\n            \"id\": \"48a9ab90-1276-11ed-861d-3242ac120002\",\n            \"nombre\": \"Grecia\"\n        },\n        {\n            \"id\": \"48a9ab90-1276-11ed-861d-3242ac1200234\",\n            \"nombre\": \"Italia\"\n        }\n    ],\n    \"productos\": [\n        {\n            \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\n            \"nombre\": \"Aceite de oliva\",\n            \"categoria\": \"Aceites\"\n        },\n        {\n            \"id\": \"89832333-1276-11ed-861d-3242ac120002\",\n            \"nombre\": \"Zanahoria\",\n            \"categoria\": \"Verduras\"\n        }\n    ],\n    \"recetas\": [\n        {\n            \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\n            \"nombre\": \"Ajoblanco\",\n            \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n            \"image\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n            \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n            \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n            \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n        },\n        {\n            \"id\": \"987689he-1276-11ed-861d-3242ac120002\",\n            \"nombre\": \"Dorada al ajillo\",\n            \"descripcion\": \"es una receta con muy pocos ingredientes y todos ellos de los que solemos tener en la despensa así que, para preparar este plato, solo necesitamos una buena dorada. El secreto del éxito de este plato está en conseguir que la dorada nos quede en su punto óptimo de cocción. Para ello, es importante que la plancha o la sartén donde la vayamos a cocinar esté muy caliente, para que se forme una primera costra inicial al poner la dorada en la plancha y que no se pierdan los jugos del pescado. Como siempre, no debemos cocinar la dorada en exceso para que no se seque. Con estas premisas y la guarnición que más nos guste, tendremos un plato ligero y sabroso.\",\n            \"image\": \"https://imag.bonviveur.com/dorada-al-ajillo.webp\",\n            \"preparacionUrl\": \"https://www.youtube.com/watch?v=R3i6OHXsVjA\",\n            \"preparacion\": \"Picamos el ajo y el perejil\\nLos mezclamos con el aceite en un bol y lo dejamos macerar\\nCalentamos la plancha, la pincelamos con aceite, colocamos los filetes de dorada con la piel hacia arriba. La salamos y le añadimos un poco del aceite de ajo y perejil\\nDejamos que se cocine unos minutos y le damos la vuelta\\nLe echamos un poco más de aceite aromatizado\\nCuando esté hecha, la retiramos para una fuente\\nLa rehogamos con el aliño y la servimos calentita\",\n            \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n        }\n    ],\n    \"restaurantes\": [\n        {\n            \"id\": \"14f05fgfd0e-1275-11ed-861d-0242ac120032\",\n            \"nombre\": \"MediRest\",\n            \"pais\": \"España\",\n            \"ciudad\": \"Valencia\",\n            \"estrellasMichelin\": [\n                {\n                    \"id\": \"14f05fgfd0e-2233-11ed-861d-0242ac120032\",\n                    \"fechaConsecucion\": \"2014-07-22\"\n                }\n            ]\n        },\n        {}\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Retorna la información a detalle de la cultura gastronómica solicitada con el id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Ecuatoriana\",\n   \"descripcion\": \"La gastronomía ecuatoriana es una variada forma de preparar comidas y bebidas hechas en dicho país, que se ve enriquecida por la pluriculturalidad, aportaciones de las diversas regiones y climas que componen el mismo.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				},
+				"description": "Edita la información básica de la cultura gastrónomica indicada con el id. Retorna la información básica de la cultura gastronómica, incluyendo su id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Ecuatoriana\",\n   \"descripcion\": \"La gastronomía ecuatoriana es una variada forma de preparar comidas y bebidas hechas en dicho país, que se ve enriquecida por la pluriculturalidad, aportaciones de las diversas regiones y climas que componen el mismo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Ecuatoriana\",\n    \"descripcion\": \"La gastronomía ecuatoriana es una variada forma de preparar comidas y bebidas hechas en dicho país, que se ve enriquecida por la pluriculturalidad, aportaciones de las diversas regiones y climas que componen el mismo.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Ecuatoriana\",\n   \"descripcion\": \"La gastronomía ecuatoriana es una variada forma de preparar comidas y bebidas hechas en dicho país, que se ve enriquecida por la pluriculturalidad, aportaciones de las diversas regiones y climas que componen el mismo.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Edita la información básica de la cultura gastrónomica indicada con el id. Retorna la información básica de la cultura gastronómica, incluyendo su id. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Ecuatoriana\",\n   \"descripcion\": \"La gastronomía ecuatoriana es una variada forma de preparar comidas y bebidas hechas en dicho país, que se ve enriquecida por la pluriculturalidad, aportaciones de las diversas regiones y climas que componen el mismo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar cultura gastronómica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				},
+				"description": "Elimina la cultura gastronómica indicada con el id y toda su información que tuviese relacionada a ella. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar cultura gastronómica con éxito",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar cultura gastronómica inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronómica con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Elimina la cultura gastronómica indicada con el id y toda su información que tuviese relacionada a ella. No retorna contenido en caso de éxito. En caso no exista la cultura gastronómica con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar cultura gastronómica inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronómica con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}
