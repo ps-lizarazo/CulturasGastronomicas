@@ -6,7 +6,7 @@ import { BusinessErrorsInterceptor } from '../shared/interceptors/business-error
 import { RecetaCulturaGastronomicaService } from './receta-cultura_gastronomica.service';
 
 @UseInterceptors(BusinessErrorsInterceptor)
-@Controller('receta-cultura-gastronomica')
+@Controller('culturas_gastronomicas')
 export class RecetaCulturaGastronomicaController {
     constructor(private readonly recetaCulturaGastronomicaService: RecetaCulturaGastronomicaService) { }
 

@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "2c2ee545-8365-4e04-929a-3ef7dad9d4f1",
+		"name": "Recetas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22955676"
+	},
+	"item": [
+		{
+			"name": "Crear receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"idReceta\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				},
+				"description": "Crea una receta en el sistema. Retorna la receta creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear receta",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"idCulturaGastronomica\": null,\n    \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar recetas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of recetas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				},
+				"description": "Retorna las recetas que se encuentran en el sistema, incluyendo sus detalles."
+			},
+			"response": [
+				{
+					"name": "Listar recetas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\",\n        \"nombre\": \"Ajoblanco\",\n        \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n        \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n        \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n        \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n        \"culturaGastronomica\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"{{idReceta}}"
+					]
+				},
+				"description": "Retorna la información a detalle de la receta solicitada con el id. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta con éxito",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"{{idReceta}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\",\n    \"nombre\": \"Ajoblanco\",\n    \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"culturaGastronomica\": null\n}"
+				},
+				{
+					"name": "Consultar receta inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar receta inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Retorna la información a detalle de la receta solicitada con el id. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Consultar receta inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ajoblanco actualizado\",\n    \"descripcion\": \"Es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"{{idReceta}}"
+					]
+				},
+				"description": "Edita la información básica de la receta indicada con el id. Retorna la información básica de la receta, incluyendo su id. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar receta con éxito",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Ajoblanco actualizado\",\n    \"descripcion\": \"Es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"{{idReceta}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"8ce114c1-6e4e-4327-8a87-5dd56bb8e933\",\n    \"nombre\": \"Ajoblanco actualizado\",\n    \"descripcion\": \"Es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar receta inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Ajoblanco actualizado\",\n    \"descripcion\": \"Es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Edita la información básica de la receta indicada con el id. Retorna la información básica de la receta, incluyendo su id. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Editar receta inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Ajoblanco actualizado\",\n    \"descripcion\": \"Es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\n    \"imageUrl\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\n    \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"{{idReceta}}"
+					]
+				},
+				"description": "Elimina la receta indicada con el id y toda su información que tuviese relacionada a ella. No retorna contenido en caso de éxito. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta con éxito",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/{{idReceta}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"{{idReceta}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Eliminar receta inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar receta inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id brindado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				},
+				"description": "Elimina la receta indicada con el id y toda su información que tuviese relacionada a ella. No retorna contenido en caso de éxito. En caso no exista la receta con el id dado, se retorna el código 404 con el mensaje correspondiente."
+			},
+			"response": [
+				{
+					"name": "Eliminar receta inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}
