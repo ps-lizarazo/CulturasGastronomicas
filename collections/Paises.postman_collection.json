@@ -1,0 +1,553 @@
+{
+	"info": {
+		"_postman_id": "ca713dc6-ef48-4da4-bf2f-ab958b26d629",
+		"name": "Paises",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19322134"
+	},
+	"item": [
+		{
+			"name": "Agregar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"idPais\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Colombia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar paises",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Colombia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"1234-xbc321\",\r\n    \"nombre\": \"Colombia\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener paises",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of paises > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener paises",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"1234-xbc321\",\n        \"nombre\": \"Colombia\",\n        \"ciudades\": [\n            {\n                \"id\": \"1234-xbc321\",\n                \"nombre\": \"Bogota\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"1234-xewq1\",\n                \"nombre\": \"Colombiana\",\n                \"descripcion\": \"Colombiana\"\n            }\n        ]\n    },\n    {\n        \"id\": \"1234-xewq1\",\n        \"nombre\": \"Argentina\",\n        \"ciudades\": [\n            {\n                \"id\": \"321-xaa\",\n                \"nombre\": \"Buenos Aires\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"4123-xewq1\",\n                \"nombre\": \"Argentina\",\n                \"descripcion\": \"Argentina\"\n            }\n        ]\n        \n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener detalle de pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener detalle de pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"1234-xbc321\",\r\n    \"nombre\": \"Colombia\",\r\n    \"ciudades\": [\r\n        {\r\n            \"id\": \"1234-xbc321\",\r\n            \"nombre\": \"Bogota\"\r\n        }\r\n    ],\r\n    \"culturasGastronomicas\": [\r\n        {\r\n            \"id\": \"1234-xewq1\",\r\n            \"nombre\": \"Colombiana\",\r\n            \"descripcion\": \"Colombiana\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener detalle de un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener detalle de un pais que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000.",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000."
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con ese id no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Polombia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar pais",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Polombia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"1234-xbc321\",\r\n    \"nombre\": \"Polombia\",\r\n    \"ciudades\": [\r\n        {\r\n            \"id\": \"1234-xbc321\",\r\n            \"nombre\": \"Bogota\"\r\n        }\r\n    ],\r\n    \"culturas_gastronomicas\": [\r\n        {\r\n            \"id\": \"1234-xewq1\",\r\n            \"nombre\": \"Colombiana\",\r\n            \"descripcion\": \"Colombiana\"\r\n        }\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Polombia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar pais que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000.",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000."
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con ese id no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar pais",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": " "
+				}
+			]
+		},
+		{
+			"name": "Borrar pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar pais que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000.",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000."
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con ese id no existe\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}

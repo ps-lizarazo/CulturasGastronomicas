@@ -161,9 +161,20 @@ export class PaisCulturagastronomicaService {
         BusinessError.NOT_FOUND,
       );
     }
+
+    const paisCultura: CulturaGastronomicaEntity =
+      pais.culturasGastronomicas.find((e) => e.id === culturaGastronomica.id);
+
+    if (!paisCultura)
+      throw new BusinessLogicException(
+        'La cultura gastronomica con el id dado no esta asociada al pais',
+        BusinessError.PRECONDITION_FAILED,
+      );
+
     pais.culturasGastronomicas = pais.culturasGastronomicas.filter(
       (culturaGastronomica) => culturaGastronomica.id !== idCulturaGastronomica,
     );
+
     await this.paisRepository.save(pais);
   }
 }
