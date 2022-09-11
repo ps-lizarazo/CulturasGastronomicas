@@ -1,0 +1,1806 @@
+{
+	"info": {
+		"_postman_id": "11eb9781-93aa-4818-8ca8-c38568915c7a",
+		"name": "Paises-CulturaGastronomica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19322134"
+	},
+	"item": [
+		{
+			"name": "[Pruebas] Agregar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"idPais\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Colombia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar paises",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Colombia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"1234-xbc321\",\r\n    \"nombre\": \"Colombia\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "[Pruebas] Crear cultura gastronómica 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"console.log(data)",
+							"pm.globals.set(\"idCulturaGastronomica\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas"
+					]
+				},
+				"description": "Crea una nueva cultura gastrónomica en el sistema. Retorna la cultura gastronómica creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"paises\": [],\n    \"productos\": [],\n    \"recetas\": [],\n    \"restaurantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "[Pruebas] Crear cultura gastronómica 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"console.log(data)",
+							"pm.globals.set(\"idCulturaGastronomica2\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturas_gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturas_gastronomicas"
+					]
+				},
+				"description": "Crea una nueva cultura gastrónomica en el sistema. Retorna la cultura gastronómica creada con el id asignado."
+			},
+			"response": [
+				{
+					"name": "Crear cultura gastronómica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"nombre\": \"Mediterránea\",\n   \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\n    \"paises\": [],\n    \"productos\": [],\n    \"recetas\": [],\n    \"restaurantes\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar una cultura a un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar una cultura a un pais",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "506"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1fa-rORvAvP0u6vYgT1qVUmcx3OtAQE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:35:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2f94cb9d-5a34-4e59-81c8-eb5e50de838b\",\n    \"nombre\": \"Colombia\",\n    \"culturasGastronomicas\": [\n        {\n            \"id\": \"2755911b-6a42-458f-98a2-70ad9b393a42\",\n            \"nombre\": \"Mediterránea\",\n            \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n        }\n    ],\n    \"ciudades\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar una cultura que no existe a un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar una cultura que no existe a un pais",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-aUU8DS0Ub/pid/PpXr7u69w2uTk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:37:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar una cultura a un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar una cultura a un pais que no existe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-E6Fo+4n1LTcK8+DO6ADCwi5JXpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:38:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastro de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una cultura gastro de un pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "400"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"190-TeDruT4eMXihnLpoEQp+aA7LZKE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:38:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2755911b-6a42-458f-98a2-70ad9b393a42\",\n    \"nombre\": \"Mediterránea\",\n    \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastro que no existe de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una cultura gastro que no existe de un pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-aUU8DS0Ub/pid/PpXr7u69w2uTk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:39:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastro de un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una cultura gastro de un pais que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-E6Fo+4n1LTcK8+DO6ADCwi5JXpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:40:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una cultura gastro que no está asociada al pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no esta asociada al pais\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una cultura gastro que no está asociada al pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "94"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5e-eIPeModZmwsZB7pcxAgS748FgPI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:40:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La cultura gastronomica con el id dado no esta asociada al pais\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener las culturas gastro de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las culturas gastro de un pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "402"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"192-0QEQii1Yws3gy3Ly8e/fp1pqFZI\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:40:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"2755911b-6a42-458f-98a2-70ad9b393a42\",\n        \"nombre\": \"Mediterránea\",\n        \"descripcion\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener las culturas gastro de un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las culturas gastro de un pais que no existe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000",
+								"culturas-gastronomicas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-E6Fo+4n1LTcK8+DO6ADCwi5JXpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:41:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar las culturas gastro de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"{{idCulturaGastronomica}}\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar culturas gastronomicas de un pais",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"{{idCulturaGastronomica}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": null,
+					"cookie": [],
+					"body": "    {\n        \"id\": \"1234-xbc321\",\n        \"nombre\": \"Colombia\",\n        \"ciudades\": [\n            {\n                \"id\": \"1234-xbc321\",\n                \"nombre\": \"Bogota\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"1234-xewq1\",\n                \"nombre\": \"Colombiana\",\n                \"descripcion\": \"Colombiana\"\n            }\n        ]\n    }"
+				},
+				{
+					"name": "Actualizar las culturas gastro de un pais",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"{{idCulturaGastronomica}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "151"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"97-hcgBfQH7hUFaD8LLBOm2csZvu8g\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:44:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"2f94cb9d-5a34-4e59-81c8-eb5e50de838b\",\n    \"nombre\": \"Colombia\",\n    \"culturasGastronomicas\": [\n        {\n            \"id\": \"2755911b-6a42-458f-98a2-70ad9b393a42\"\n        }\n    ],\n    \"ciudades\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar las culturas gastro que no existen de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las culturas gastro que no existen de un pais",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-aUU8DS0Ub/pid/PpXr7u69w2uTk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:46:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar las culturas gastro de un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"id\": \"{{idCulturaGastronomica}}\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar las culturas gastro de un pais que no existe",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"{{idCulturaGastronomica}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000",
+								"culturas-gastronomicas"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-E6Fo+4n1LTcK8+DO6ADCwi5JXpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:50:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Desasociar una cultura gastro de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Desasociar una cultura gastro de un pais",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:50:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Desasociar una cultura gastro de un pais que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El pais con el id dado no existe\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"00000000-0000-0000-0000-000000000000",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Desasociar una cultura gastro de un pais que no existe",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/00000000-0000-0000-0000-000000000000/culturas-gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"00000000-0000-0000-0000-000000000000",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-E6Fo+4n1LTcK8+DO6ADCwi5JXpM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:51:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Desasociar una cultura gastro que no existe de un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Desasociar una cultura gastro que no existe de un pais",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4f-aUU8DS0Ub/pid/PpXr7u69w2uTk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:51:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id dado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar una cultura gastro que no está ascociada al pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {\r",
+							"   pm.response.to.have.status(412);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id dado no esta asociada al pais\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						"{{idPais}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica2}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una cultura gastro que no está ascociada al pais",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/{{idPais}}/culturas-gastronomicas/{{idCulturaGastronomica2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								"{{idPais}}",
+								"culturas-gastronomicas",
+								"{{idCulturaGastronomica2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"42-wq3TexeNhfGgfPYSVVRE0ZAHzjk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Sep 2022 19:57:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"La cultura no esta asociada al pais\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
