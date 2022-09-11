@@ -12,6 +12,9 @@ export class ProductoEntity {
   nombre: string;
 
   @Column()
+  descripcion: string;
+
+  @Column()
   historia: string;
 
   @ManyToOne(() => CategoriaEntity, categoria => categoria.productos)
