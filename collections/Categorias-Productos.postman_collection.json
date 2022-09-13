@@ -1,0 +1,716 @@
+{
+	"info": {
+		"_postman_id": "a9c7a904-9257-48eb-810a-ddcd5d1e0986",
+		"name": "Categorias-Productos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22955676"
+	},
+	"item": [
+		{
+			"name": "Agregar producto a categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}/productos/{{idProducto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}",
+						"productos",
+						"{{idProducto}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar producto a categoria",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"categoria prueba\",\n    \"productos\":[\n        {\n            \"id\":\"1c600f44-24d6-11ed-861d-0242ac120002\",\n            \"nombre\":\"zucchini\",\n            \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas.\",\n            \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\",\n            \"id_categoria\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Añadir producto a categoria inexistente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Arroz con pollo a la ecuatoriana\",\n    \"descripcion\": \"La receta de arroz y pollo ecuatoriana se acompaña con plátano frito. Es un plato simple y muy nutritivo.\",\n    \"image\": \"https://www.cocina-ecuatoriana.com/base/stock/Recipe/231-image/231-image_web.jpg\",\n    \"preparacionUrl\": \"https://www.youtube.com/watch?v=WuxYBBOUdRo\",\n    \"preparacion\": \"Tomar las pechugas de pollo y condimentar con una mezcla realizada con todas las especias de la lista.\\nColocar el pollo con la piel hacia abajo en una sartén con aceite caliente y cocinar hasta dorar.\\nAgregar a la cacerola la cebolla, los tomates, el morrón y cocinar por unos 15 minutos.\\nAgregar el vino blanco y cocinar  hasta que el líquido se reduzca a la mitad.\\nAñadir ahora el agua con el arroz, los frijoles y las zanahorias y cocinar a fuego medio hasta que el arroz se haya cocido. \\nServir el arroz con pollo acompañado con plátano maduro frito.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000",
+								"productos"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoría con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar productos de una categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}/productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}",
+						"productos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar productos de una categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\":\"85dbc95a-24d5-11ed-861d-0242ac120002\",\n        \"nombre\":\"zucchini\",\n        \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas.\",\n        \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\",\n        \"id_categoria\": \"96d8ab90-1276-11ed-861d-0242ac120002\"\n    },\n    {\n        \"id\":\"1c600f44-24d6-11ed-861d-0242ac120002\",\n        \"nomobre\":\"Tomate de árbol\",\n        \"descripcion\":\"con su color entre tonos de rojo oscuro y morado. Tienen una forma ovalada, con unos 6 centímetros de largo y la pulpa naranja. Su sabor es agridulce. Tomate de árbol rojo: suele tener un rojo intenso en el color de su piel, que luego, a medida que pasa el tiempo, se vuelve naranja\",\n        \"historia\":\"El tomate de árbol (Cyphomandra betaceae), también conocido como tomate de palo, tomate cimarrón, y contragallinazo, pertenece a la familia de las solanáceas. Es una planta originaria de los Andes Peruanos, dispersa en otros países de la región andina como Chile, Ecuador, Bolivia, Brasil y Colombia\",\n        \"id_categoria\": \"96d8ab90-1276-11ed-861d-0242ac120002\"\n    }\n]"
+				},
+				{
+					"name": "Listar productos de categoria inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Consultar producto de categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}/productos/{{idProducto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}",
+						"productos",
+						"{{idProducto}}"
+					]
+				},
+				"description": "Retorna la información de la receta indicada con el id, incluyendo su propio id y el id de la cultura gastronómica a la que pertenece."
+			},
+			"response": [
+				{
+					"name": "Consultar producto de categoria con éxito",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\":\"1c600f44-24d6-11ed-861d-0242ac120002\",\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\",\n    \"id_categoria\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\n}"
+				},
+				{
+					"name": "Consultar producto de categoria inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				},
+				{
+					"name": "Consultar producto inexistente de categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El producto con el id brindado no ha sido encontrado.\"\n}"
+				},
+				{
+					"name": "Consultar producto que no pertenece a la categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto2}}"
+							]
+						}
+					},
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El producto con id brindado no pertenece a la categoria dada por su id.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar producto de categoría",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 201\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\":\"20db9daf-c448-4e75-9c7b-ac0ca1a15980\"\n        \n    },\n     {\n        \"id\":\"b8585a9a-29cc-453b-ae32-dff1ecff5ffe\"\n        \n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}/productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}",
+						"productos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Editar producto de categoría",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas. Muy solicitado en Colombia.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"1c600f44-24d6-11ed-861d-0242ac120002\",\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas. Muy solicitado en Colombia.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\",\n    \"id_categoria\": \"96d8ab90-1276-11ed-861d-0242ac120002\"\n}"
+				},
+				{
+					"name": "Editar producto de categoria inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"zucchini\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas. Muy solicitado en Colombia.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				},
+				{
+					"name": "Editar producto inexistente de categoría",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"zucchini2\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas. Muy solicitado en Colombia.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El producto con el id brindado no ha sido encontrado.\"\n}"
+				},
+				{
+					"name": "Editar producto que no pertenece a la categoría",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"zucchini2\",\n    \"descripcion\":\"Un calabacín es un tipo de calabaza de verano que por lo general se parece a un cilindro liso, largo y de color verde oscuro. Tanto la calabaza como la planta en la que crece se llaman calabacín. Al igual que otros tipos de calabaza, el calabacín crece en el suelo a partir de una planta parecida a una enredadera que se asemeja a un arbusto con hojas gruesas. Muy solicitado en Colombia.\",\n    \"historia\":\"Origen. Luego de los viajes de Colón se extendió su cultivo a Europa, donde fueron muy populares sus variedades para consumir el fruto inmaduro como verdura de estación casi desplazando en su totalidad los calabacines de Lagenaria siceraria, y de allí al resto del mundo.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El producto con id brindado no pertenece a la categoría dada por su id.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar producto de categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}/productos/{{idProducto}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}",
+						"productos",
+						"{{idProducto}}"
+					]
+				},
+				"description": "Elimina la receta indicada con el id. No retorna contenido en caso de éxito."
+			},
+			"response": [
+				{
+					"name": "Eliminar producto de categoria con éxito",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Eliminar producto de categoria inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000/productos/{{idProducto}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000",
+								"productos",
+								"{{idProducto}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoría con el id brindado no ha sido encontrada.\"\n}"
+				},
+				{
+					"name": "Eliminar producto inexistente de categoria",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El producto con el id brindado no ha sido encontrado.\"\n}"
+				},
+				{
+					"name": "Eliminar producto que no pertenece a categoria",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}/productos/{{idProducto2}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}",
+								"productos",
+								"{{idProducto2}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El producto el id brindado no pertenece a la categoria dada por su id.\"\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "<Basic Auth Username>",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "<Basic Auth Password>",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
