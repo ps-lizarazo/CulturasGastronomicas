@@ -1,0 +1,455 @@
+{
+	"info": {
+		"_postman_id": "51025c1f-962d-4f6d-a548-cf6fcf8aeda9",
+		"name": "Categorias",
+		"description": "En esta sección encontrará los endpoints necesarios para crear editar y consultar categorías, también puede encontrar los endpoints para crear y asociar productos a una categoria, consultar los productos de una categoría, editar el producto de una categoría y eliminar el producto de una categoría",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22955676"
+	},
+	"item": [
+		{
+			"name": "Crear categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"categoria_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Frutas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear categoria",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"categoria prueba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"categoria prueba\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar categorias",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de categorias > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"El codigo de status es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar categorias",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"96d8ab90-1276-11ed-861d-0242ac120002\",\n        \"nombre\": \"categoria prueba\",\n        \"productos\": [\n            {\n                \"id\": \"producto_xyz1\",\n                \"nombre\": \"nombre producto 1\",\n                \"descripcion\": \"descripcion 1\",\n                \"historia\": \"historia 1\"\n            }\n        ]\n    },\n    {\n        \"id\": \"265d87r2-1276-11ed-861d-0242ac120003\",\n        \"nombre\": \"categoria dos\",\n        \"productos\": [\n            {\n                \"id\": \"producto_xyz2\",\n                \"nombre\": \"nombre producto 2 categoria 2\",\n                \"descripcion\": \"descripcion 2\",\n                \"historia\": \"historia 2\"\n            },\n            {\n                \"id\": \"producto_xyz3\",\n                \"nombre\": \"nombre producto 3 categoria 2\",\n                \"descripcion\": \"descripcion 3\",\n                \"historia\": \"historia 3\"\n            }\n        ]\n    },\n    {\n        \"id\": \"78d2f3we7-1276-11ed-861d-0242ac120004\",\n        \"nombre\": \"categoria tres\",\n        \"productos\": [\n            {\n                \"id\": \"producto_xyz4\",\n                \"nombre\": \"nombre producto 4 categoria 3\",\n                \"descripcion\": \"descripcion 4\",\n                \"historia\": \"historia 4\"\n            },\n            {\n                \"id\": \"producto_xyz5\",\n                \"nombre\": \"nombre producto 5 categoria 3\",\n                \"descripcion\": \"descripcion 5\",\n                \"historia\": \"historia 5\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Consultar categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Consultar categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"96d8ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"categoria prueba\",\n    \"productos\": [\n        {\n            \"id\": \"producto_xyz1\",\n            \"nombre\": \"nombre producto 1\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Consultar categoria inexistente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Frutas rojas\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/categorias/{{idCategoria}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"categorias",
+						"{{idCategoria}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Editar categoria",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nuevo nombre\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"96d8ab90-1276-11ed-861d-0242ac120002\",\n    \"nombre\": \"Nuevo nombre\"\n}"
+				},
+				{
+					"name": "Editar categoria inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Nuevo nombre\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias/9999-99999-99999999",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"9999-99999-99999999"
+							]
+						}
+					},
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar categoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El codigo de status es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{idCategoria}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{idCategoria}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar categoria",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{idCategoria}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{idCategoria}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "Eliminar categoria inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La categoria con el id brindado no ha sido encontrada.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "idProducto2",
+			"value": "producto_xyz5"
+		}
+	]
+}
