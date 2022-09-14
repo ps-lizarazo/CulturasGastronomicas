@@ -23,6 +23,7 @@ import { PaisEntity } from './pais/pais.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { RestauranteCulturagastronomicaModule } from './restaurante-culturagastronomica/restaurante-culturagastronomica.module';
 import { RecetaCulturaGastronomicaModule } from './receta-cultura_gastronomica/receta-cultura_gastronomica.module';
+import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { RecetaCulturaGastronomicaModule } from './receta-cultura_gastronomica/r
     PaisCulturagastronomicaModule,
     RestauranteCulturagastronomicaModule,
     CiudadRestauranteModule,
+    RestauranteCiudadModule,
     CategoriaProductoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',

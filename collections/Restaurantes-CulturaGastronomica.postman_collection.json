@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "f4f78d09-0209-4e0b-8518-d99c0a547a55",
+		"name": "Restaurantes-CulturaGastronomica",
+		"description": "Colección que administra el recurso de la relación restaurantes - cultura gastronómica.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener una cultura gastronomicas de un retaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurantes",
+						"{{idRestaurante}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una cultura gastronomicas de un restaurante",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurantes",
+								"{{idRestaurante}}",
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n    \"nombre\": \"Mediterránea\",\r\n    \"description\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\r\n    \"paises\": [\r\n        {\r\n            \"id\": \"48a9ab90-1276-11ed-861d-3242ac120002\",\r\n            \"nombre\": \"Grecia\"\r\n        },\r\n        {\r\n            \"id\": \"48a9ab90-1276-11ed-861d-3242ac1200234\",\r\n            \"nombre\": \"Italia\"\r\n        }\r\n    ],\r\n    \"productos\": [\r\n        {\r\n            \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\r\n            \"nombre\": \"Aceite de oliva\",\r\n            \"categoria\": \"Aceites\"\r\n        },\r\n        {\r\n            \"id\": \"89832333-1276-11ed-861d-3242ac120002\",\r\n            \"nombre\": \"Zanahoria\",\r\n            \"categoria\": \"Verduras\"\r\n        }\r\n    ],\r\n    \"recetas\": [\r\n        {\r\n            \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\r\n            \"nombre\": \"Ajoblanco\",\r\n            \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\r\n            \"image\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\r\n            \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\r\n            \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\r\n            \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\r\n        },\r\n        {\r\n            \"id\": \"987689he-1276-11ed-861d-3242ac120002\",\r\n            \"nombre\": \"Dorada al ajillo\",\r\n            \"descripcion\": \"es una receta con muy pocos ingredientes y todos ellos de los que solemos tener en la despensa así que, para preparar este plato, solo necesitamos una buena dorada. El secreto del éxito de este plato está en conseguir que la dorada nos quede en su punto óptimo de cocción. Para ello, es importante que la plancha o la sartén donde la vayamos a cocinar esté muy caliente, para que se forme una primera costra inicial al poner la dorada en la plancha y que no se pierdan los jugos del pescado. Como siempre, no debemos cocinar la dorada en exceso para que no se seque. Con estas premisas y la guarnición que más nos guste, tendremos un plato ligero y sabroso.\",\r\n            \"image\": \"https://imag.bonviveur.com/dorada-al-ajillo.webp\",\r\n            \"preparacionUrl\": \"https://www.youtube.com/watch?v=R3i6OHXsVjA\",\r\n            \"preparacion\": \"Picamos el ajo y el perejil\\nLos mezclamos con el aceite en un bol y lo dejamos macerar\\nCalentamos la plancha, la pincelamos con aceite, colocamos los filetes de dorada con la piel hacia arriba. La salamos y le añadimos un poco del aceite de ajo y perejil\\nDejamos que se cocine unos minutos y le damos la vuelta\\nLe echamos un poco más de aceite aromatizado\\nCuando esté hecha, la retiramos para una fuente\\nLa rehogamos con el aliño y la servimos calentita\",\r\n            \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\r\n        }\r\n    ],\r\n    \"restaurantes\": [\r\n        {\r\n            \"id\": \"14f05fgfd0e-1275-11ed-861d-0242ac120032\",\r\n            \"nombre\": \"MediRest\",\r\n            \"pais\": \"España\",\r\n            \"ciudad\": \"Valencia\",\r\n            \"estrellasMichelin\": [\r\n                {\r\n                    \"id\": \"14f05fgfd0e-2233-11ed-861d-0242ac120032\",\r\n                    \"fechaConsecucion\": \"2014-07-22\"\r\n                }\r\n            ]\r\n        },\r\n        {}\r\n    ]\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener culturas gastronomicas de un restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of culturas-gastronomicas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurantes",
+						"{{idRestaurante}}",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener culturas gastronomicas de un restaurante",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/restaurante/{{idRestaurante}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurante",
+								"{{idRestaurante}}",
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": \"48a9ab90-1276-11ed-861d-0242ac120002\",\r\n        \"nombre\": \"Mediterránea\",\r\n        \"description\": \"La dieta mediterránea es una forma de alimentación basada en las cocinas tradicionales de Grecia, Italia y otros países que bordean el mar Mediterráneo. Los alimentos de origen vegetal, como cereales integrales, verduras, legumbres, frutas, frutos secos, semillas, hierbas y especias, son la base de la dieta.\",\r\n        \"paises\": [\r\n            {\r\n                \"id\": \"48a9ab90-1276-11ed-861d-3242ac120002\",\r\n                \"nombre\": \"Grecia\"\r\n            },\r\n            {\r\n                \"id\": \"48a9ab90-1276-11ed-861d-3242ac1200234\",\r\n                \"nombre\": \"Italia\"\r\n            }\r\n        ],\r\n        \"productos\": [\r\n            {\r\n                \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\r\n                \"nombre\": \"Aceite de oliva\",\r\n                \"categoria\": \"Aceites\"\r\n            },\r\n            {\r\n                \"id\": \"89832333-1276-11ed-861d-3242ac120002\",\r\n                \"nombre\": \"Zanahoria\",\r\n                \"categoria\": \"Verduras\"\r\n            }\r\n        ],\r\n        \"recetas\": [\r\n            {\r\n                \"id\": \"3339ab90-1276-11ed-861d-3242ac120002\",\r\n                \"nombre\": \"Ajoblanco\",\r\n                \"descripcion\": \"es una variante del gazpacho porque, al igual que este, también tiene como base pan, aceite y ajo. El ajoblanco es una sopa fría muy popular en Andalucía y en Extremadura.\",\r\n                \"image\": \"https://imag.bonviveur.com/ajoblanco-prinncipal.webp\",\r\n                \"preparacionUrl\": \"https://www.youtube.com/watch?v=DN0v9T10rqI\",\r\n                \"preparacion\": \"Partimos el pan y lo ponemos en remojo con el agua\\nQuitamos el germen del ajo\\nPonemos las almendras, el ajo, la sal, el vinagre y el aceite de oliva en el vaso de una batidora\\nAñadimos el pan remojado\\nTrituramos el conjunto y llevamos el ajoblanco a la nevera 2 horas\\nCortamos las uvas\\nServimos el ajoblanco muy frio con las uvas y aceite de oliva\",\r\n                \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\r\n            },\r\n            {\r\n                \"id\": \"987689he-1276-11ed-861d-3242ac120002\",\r\n                \"nombre\": \"Dorada al ajillo\",\r\n                \"descripcion\": \"es una receta con muy pocos ingredientes y todos ellos de los que solemos tener en la despensa así que, para preparar este plato, solo necesitamos una buena dorada. El secreto del éxito de este plato está en conseguir que la dorada nos quede en su punto óptimo de cocción. Para ello, es importante que la plancha o la sartén donde la vayamos a cocinar esté muy caliente, para que se forme una primera costra inicial al poner la dorada en la plancha y que no se pierdan los jugos del pescado. Como siempre, no debemos cocinar la dorada en exceso para que no se seque. Con estas premisas y la guarnición que más nos guste, tendremos un plato ligero y sabroso.\",\r\n                \"image\": \"https://imag.bonviveur.com/dorada-al-ajillo.webp\",\r\n                \"preparacionUrl\": \"https://www.youtube.com/watch?v=R3i6OHXsVjA\",\r\n                \"preparacion\": \"Picamos el ajo y el perejil\\nLos mezclamos con el aceite en un bol y lo dejamos macerar\\nCalentamos la plancha, la pincelamos con aceite, colocamos los filetes de dorada con la piel hacia arriba. La salamos y le añadimos un poco del aceite de ajo y perejil\\nDejamos que se cocine unos minutos y le damos la vuelta\\nLe echamos un poco más de aceite aromatizado\\nCuando esté hecha, la retiramos para una fuente\\nLa rehogamos con el aliño y la servimos calentita\",\r\n                \"idCulturaGastronomica\": \"48a9ab90-1276-11ed-861d-0242ac120002\"\r\n            }\r\n        ],\r\n        \"restaurantes\": [\r\n            {\r\n                \"id\": \"14f05fgfd0e-1275-11ed-861d-0242ac120032\",\r\n                \"nombre\": \"MediRest\",\r\n                \"pais\": \"España\",\r\n                \"ciudad\": \"Valencia\",\r\n                \"estrellasMichelin\": [\r\n                    {\r\n                        \"id\": \"14f05fgfd0e-2233-11ed-861d-0242ac120032\",\r\n                        \"fechaConsecucion\": \"2014-07-22\"\r\n                    }\r\n                ]\r\n            }\r\n        ]\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Actualizar culturas gastronomicas de un restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"id\": \"{{idCulturaGastronomica}}\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas-gastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurantes",
+						"{{idRestaurante}}",
+						"culturas-gastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar culturas gastronomicas de un restaurante",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": {{idCulturaGastronomica}}\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas_gastronomicas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurantes",
+								"{{idRestaurante}}",
+								"culturas_gastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n    \"nombre\": \"Restaurante de prueba\",\n    \"estrellas\": [\n        {\n            \"fecha_consecucion\": \"2020-01-01\"\n        }\n    ],\n    \"culturas_gastronomicas\": [\n        {\n            \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n            \"nombre\": \"cocina colombiana\",\n            \"descripcion\": \"cocina colombiana\"\n        }\n    ],\n    \"ciudad\": {\n        \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n        \"nombre\": \"Bogota\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar cultura gastronomica de un restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas-gastronomicas/{{idCulturaGastronomica}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurantes",
+						"{{idRestaurante}}",
+						"culturas-gastronomicas",
+						"{{idCulturaGastronomica}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar cultura gastronomica de un restaurante",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/culturas_gastronomicas/{{idCulturaGastronomica}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurantes",
+								"{{idRestaurante}}",
+								"culturas_gastronomicas",
+								"{{idCulturaGastronomica}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": " "
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/API/v1"
+		}
+	]
+}

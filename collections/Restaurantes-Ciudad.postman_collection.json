@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "c79ee89d-8fe2-4a15-9e3a-113c3942e506",
+		"name": "Restaurantes-Ciudad",
+		"description": "Colección que administra el recurso de la relación restaurantes - ciudad.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Actualizar ciudad de un restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}/ciudad/{{idCiudad}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurantes",
+						"{{idRestaurante}}",
+						"ciudad",
+						"{{idCiudad}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar ciudad de un restaurante",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ciudad\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/restaurantes/{{idRestaurante}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"restaurantes",
+								"{{idRestaurante}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n    \"nombre\": \"Nuevo nombre\",\n        \"estrellas\": [\n        {\n            \"fecha_consecucion\": \"2020-01-01\"\n        }\n    ],\n    \"culturas_gastronomicas\": [\n        {\n            \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n            \"nombre\": \"cocina colombiana\",\n            \"descripcion\": \"cocina colombiana\"\n        }\n    ],\n    \"ciudad\": {\n        \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n        \"nombre\": \"Bogota\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/API/v1"
+		}
+	]
+}
