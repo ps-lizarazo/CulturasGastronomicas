@@ -562,7 +562,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "localhost:3000",
+			"value": "localhost:3000/API/v1",
 			"type": "string"
 		}
 	]

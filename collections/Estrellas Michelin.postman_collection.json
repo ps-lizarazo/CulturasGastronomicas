@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "49b564b3-37ab-4523-b2b1-9de60ff365cf",
+		"name": "Estrellas Michelin",
+		"description": "Colección que administra el recurso de estrellas Michelin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Estrellas Michelin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"idEstrellaMichelin\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fechaConsecucion\": \"2022-09-01 15:15:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/estrellas_michelines",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estrellas_michelines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Estrella Michelin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/estrellas_michelin/restaurantes/{{idRestaurante}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estrellas_michelin",
+								"restaurantes",
+								"{{idRestaurante}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"dd479a4c-7226-4fb3-8f24-b6b5094bbbb6\",\n    \"restaurante\": {\n        \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n        \"nombre\": \"Restaurante de prueba\",\n        \"estrellas\": [\n            {\n                \"fecha_consecucion\": \"2020-01-01\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                \"nombre\": \"cocina colombiana\",\n                \"descripcion\": \"cocina colombiana\"\n            }\n        ],\n        \"ciudad\": {\n            \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n            \"nombre\": \"Bogota\"\n        }\n    },\n    \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Listar Estrellas Michelin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of estrellas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/estrellas_michelines",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estrellas_michelines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listar Estrellas Michelin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/estrellas_michellin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estrellas_michellin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"dd479a4c-7226-4fb3-8f24-b6b5094bbbb6\",\n        \"restaurante\": {\n            \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n            \"nombre\": \"Restaurante de prueba\",\n            \"estrellas\": [\n                {\n                    \"fecha_consecucion\": \"2020-01-01\"\n                }\n            ],\n            \"culturas_gastronomicas\": [\n                {\n                    \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                    \"nombre\": \"cocina colombiana\",\n                    \"descripcion\": \"cocina colombiana\"\n                }\n            ],\n            \"ciudad\": {\n                \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n                \"nombre\": \"Bogota\"\n            }\n        },\n        \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n    },\n    {\n        \"id\": \"265d87r2-1276-11ed-861d-0242ac120002\",\n        \"restaurante\": {\n            \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n            \"nombre\": \"Restaurante de prueba\",\n            \"estrellas\": [\n                {\n                    \"fecha_consecucion\": \"2020-01-01\"\n                }\n            ],\n            \"culturas_gastronomicas\": [\n                {\n                    \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                    \"nombre\": \"cocina colombiana\",\n                    \"descripcion\": \"cocina colombiana\"\n                }\n            ],\n            \"ciudad\": {\n                \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n                \"nombre\": \"Bogota\"\n            }\n        },\n        \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n    },\n    {\n        \"id\": \"78d2f3we7-1276-11ed-861d-0242ac120002\",\n        \"restaurante\": {\n            \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n            \"nombre\": \"Restaurante de prueba\",\n            \"estrellas\": [\n                {\n                    \"fecha_consecucion\": \"2020-01-01\"\n                }\n            ],\n            \"culturas_gastronomicas\": [\n                {\n                    \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                    \"nombre\": \"cocina colombiana\",\n                    \"descripcion\": \"cocina colombiana\"\n                }\n            ],\n            \"ciudad\": {\n                \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n                \"nombre\": \"Bogota\"\n            }\n        },\n        \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Consultar Estrella Michelin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/estrellas_michelines/{{idEstrellaMichelin}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estrellas_michelines",
+						"{{idEstrellaMichelin}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Consultar Estrella Michelin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/estrellas_michelin/{{idEstrellaMichelin}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estrellas_michelin",
+								"{{idEstrellaMichelin}}"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"dd479a4c-7226-4fb3-8f24-b6b5094bbbb6\",\n    \"restaurante\": {\n        \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n        \"nombre\": \"Restaurante de prueba\",\n        \"estrellas\": [\n            {\n                \"fecha_consecucion\": \"2020-01-01\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                \"nombre\": \"cocina colombiana\",\n                \"descripcion\": \"cocina colombiana\"\n            }\n        ],\n        \"ciudad\": {\n            \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n            \"nombre\": \"Bogota\"\n        }\n    },\n    \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Editar Estrella Michelin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fechaConsecucion\": \"2022-09-01 15:15:15\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/estrellas_michelines/{{idEstrellaMichelin}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estrellas_michelines",
+						"{{idEstrellaMichelin}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Editar Estrella Michelin",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurante\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n    \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/estrellas_michelin/{{idEstrellaMichelin}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estrellas_michelin",
+								"{{idEstrellaMichelin}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"dd479a4c-7226-4fb3-8f24-b6b5094bbbb6\",\n    \"restaurante\": {\n        \"id\": \"0e0c41a2-e58c-436b-b015-ddbf0715ff0d\",\n        \"nombre\": \"Restaurante de prueba\",\n        \"estrellas\": [\n            {\n                \"fecha_consecucion\": \"2020-01-01\"\n            }\n        ],\n        \"culturas_gastronomicas\": [\n            {\n                \"id\": \"6009ba60-2729-11ed-a261-0242ac120002\",\n                \"nombre\": \"cocina colombiana\",\n                \"descripcion\": \"cocina colombiana\"\n            }\n        ],\n        \"ciudad\": {\n            \"id\": \"0d1b3f7d-4ff9-402a-817a-b5cec721dfd6\",\n            \"nombre\": \"Bogota\"\n        }\n    },\n    \"fecha_consecucion\": \"2022-09-01 15:15:15\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar Estrella Michelin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/estrellas_michelines/{{idEstrellaMichelin}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"estrellas_michelines",
+						"{{idEstrellaMichelin}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar Estrella Michelin",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/estrellas_michelin/{{idEstrellaMichelin}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"estrellas_michelin",
+								"{{idEstrellaMichelin}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "<Basic Auth Username>",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "<Basic Auth Password>",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/API/v1"
+		}
+	]
+}
