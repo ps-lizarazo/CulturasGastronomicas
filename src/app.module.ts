@@ -24,6 +24,12 @@ import { CiudadModule } from './ciudad/ciudad.module';
 import { RestauranteCulturagastronomicaModule } from './restaurante-culturagastronomica/restaurante-culturagastronomica.module';
 import { RecetaCulturaGastronomicaModule } from './receta-cultura_gastronomica/receta-cultura_gastronomica.module';
 import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+import { RolesGuard } from './auth/guards/roles.guard';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 
 @Module({
   imports: [
@@ -45,7 +51,7 @@ import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: 'asdfgh',
       database: 'cultura_gastronomica',
       entities: [
         CategoriaEntity,
@@ -62,6 +68,8 @@ import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad
       keepConnectionAlive: true,
     }),
     RecetaCulturaGastronomicaModule,
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
