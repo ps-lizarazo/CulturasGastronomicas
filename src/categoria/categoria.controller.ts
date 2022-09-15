@@ -1,10 +1,13 @@
-import { Get,Post,Put,Delete,HttpCode,Param,Body,Controller,UseInterceptors } from '@nestjs/common';
+import { Get,Post,Put,Delete,HttpCode,Param,Body,Controller,UseInterceptors,UseGuards,SetMetadata } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { CategoriaService } from './categoria.service';
 import { CategoriaEntity } from './categoria.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor'
 import { CategoriaDto } from './categoria.dto';
-
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Role } from '../roles/role.enum'
+import { Roles } from '../roles/roles.decorator'
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @UseInterceptors(BusinessErrorsInterceptor)
 @Controller('categorias')
@@ -12,6 +15,8 @@ export class CategoriaController {
 
   constructor(private readonly categoriaService: CategoriaService) {}
 
+  @UseGuards(JwtAuthGuard,RolesGuard)
+  @Roles(Role.LISTADOR)
   @Get()
   async findAll() {
     return await this.categoriaService.findAll();
