@@ -1,5 +1,5 @@
 const jwtConstants = {
-  JWT_SECRET: 'esmejorruby',
+  JWT_SECRET: 'secretKey',
   JWT_EXPIRES_IN: '1h',
 }
 
