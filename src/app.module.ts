@@ -51,7 +51,7 @@ import { LocalAuthGuard } from './auth/guards/local-auth.guard';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'asdfgh',
+      password: 'postgres',
       database: 'cultura_gastronomica',
       entities: [
         CategoriaEntity,

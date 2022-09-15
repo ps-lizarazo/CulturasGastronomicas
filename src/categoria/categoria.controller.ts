@@ -16,7 +16,7 @@ export class CategoriaController {
   constructor(private readonly categoriaService: CategoriaService) {}
 
   @UseGuards(JwtAuthGuard,RolesGuard)
-  @Roles(Role.LISTADOR)
+  @Roles(Role.CONSULTORTODOS)
   @Get()
   async findAll() {
     return await this.categoriaService.findAll();
