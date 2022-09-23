@@ -5,9 +5,7 @@ import { RecetaService } from './receta.service';
 import { RecetaController } from './receta.controller';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([RecetaEntity]),
-  ],
+  imports: [TypeOrmModule.forFeature([RecetaEntity])],
   providers: [RecetaService],
   controllers: [RecetaController],
 })

@@ -8,20 +8,26 @@ import { LocalStrategy } from './strategies/local-strategy';
 import { JwtStrategy } from './strategies/jwt-strategy';
 import { UserService } from '../user/user.service';
 import { RolesGuard } from './guards/roles.guard';
-import { JwtAuthGuard } from './guards/jwt-auth.guard'
-
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 @Module({
-  
   imports: [
     UserModule,
     PassportModule,
     JwtModule.register({
       secret: constants.JWT_SECRET,
       signOptions: { expiresIn: constants.JWT_EXPIRES_IN },
-    })
+    }),
   ],
-  providers: [AuthService, UserService,RolesGuard,JwtAuthGuard, JwtService, LocalStrategy, JwtStrategy],
-  exports: [AuthService]
+  providers: [
+    AuthService,
+    UserService,
+    RolesGuard,
+    JwtAuthGuard,
+    JwtService,
+    LocalStrategy,
+    JwtStrategy,
+  ],
+  exports: [AuthService],
 })
 export class AuthModule {}

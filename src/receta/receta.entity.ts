@@ -3,24 +3,27 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class RecetaEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
-    @Column()
-    nombre: string;
+  @Column()
+  nombre: string;
 
-    @Column()
-    descripcion: string;
+  @Column()
+  descripcion: string;
 
-    @Column()
-    imageUrl: string;
+  @Column()
+  imageUrl: string;
 
-    @Column()
-    preparacion: string;
+  @Column()
+  preparacion: string;
 
-    @Column()
-    preparacionUrl: string;
+  @Column()
+  preparacionUrl: string;
 
-    @ManyToOne(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.recetas)
-    culturaGastronomica: CulturaGastronomicaEntity;
+  @ManyToOne(
+    () => CulturaGastronomicaEntity,
+    (culturaGastronomica) => culturaGastronomica.recetas,
+  )
+  culturaGastronomica: CulturaGastronomicaEntity;
 }

@@ -52,7 +52,9 @@ export class RestauranteCulturagastronomicaController {
     );
   }
 
-  @Put(':restauranteId/culturas-gastronomicas')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ESCRITOR)
+  @Put('restauranteId/culturas-gastronomicas')
   async associateCulturasGastronomicasByRestauranteId(
     @Body() culturasGastronomicasDto: CulturaGastronomicaEntity[],
     @Param('restauranteId') restauranteId: string,
