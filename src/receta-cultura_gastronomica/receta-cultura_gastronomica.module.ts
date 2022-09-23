@@ -6,8 +6,10 @@ import { RecetaCulturaGastronomicaController } from './receta-cultura_gastronomi
 import { RecetaCulturaGastronomicaService } from './receta-cultura_gastronomica.service';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity, RecetaEntity])],
-    providers: [RecetaCulturaGastronomicaService],
-    controllers: [RecetaCulturaGastronomicaController],
+  imports: [
+    TypeOrmModule.forFeature([CulturaGastronomicaEntity, RecetaEntity]),
+  ],
+  providers: [RecetaCulturaGastronomicaService],
+  controllers: [RecetaCulturaGastronomicaController],
 })
 export class RecetaCulturaGastronomicaModule {}

@@ -7,6 +7,6 @@ import { CulturaGastronomicaController } from './cultura_gastronomica.controller
 @Module({
   imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity])],
   providers: [CulturaGastronomicaService],
-  controllers: [CulturaGastronomicaController]
+  controllers: [CulturaGastronomicaController],
 })
 export class CulturaGastronomicaModule {}
