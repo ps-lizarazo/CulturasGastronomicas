@@ -6,6 +6,7 @@ import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastr
 import { RecetaEntity } from '../receta/receta.entity';
 import { faker } from '@faker-js/faker';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { CacheModule } from '@nestjs/common';
 
 describe('RecetaCulturaGastronomicaService', () => {
   let service: RecetaCulturaGastronomicaService;
@@ -16,7 +17,7 @@ describe('RecetaCulturaGastronomicaService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [RecetaCulturaGastronomicaService],
     }).compile();
 

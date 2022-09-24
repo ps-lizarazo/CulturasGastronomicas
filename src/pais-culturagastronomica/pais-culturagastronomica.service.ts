@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 import { PaisEntity } from '../pais/pais.entity';
@@ -16,6 +17,8 @@ export class PaisCulturagastronomicaService {
 
     @InjectRepository(CulturaGastronomicaEntity)
     private readonly culturaGastronomicaRepository: Repository<CulturaGastronomicaEntity>,
+
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async associateCulturaGastronomicaPais(
@@ -90,7 +93,16 @@ export class PaisCulturagastronomicaService {
     return paisCultura;
   }
 
-  async findCulturasGastronomicasInPais(idPais: string) {
+  async findCulturasGastronomicasInPais(
+    idPais: string,
+  ): Promise<CulturaGastronomicaEntity[]> {
+    const cacheKey = `pais-culturagastronomica-${idPais}`;
+    const cached: CulturaGastronomicaEntity[] = await this.cacheManager.get(
+      cacheKey,
+    );
+
+    if (cached) return cached;
+
     const pais = await this.paisRepository.findOne({
       where: { id: `${idPais}` },
       relations: ['culturasGastronomicas', 'ciudades'],
@@ -101,7 +113,12 @@ export class PaisCulturagastronomicaService {
         BusinessError.NOT_FOUND,
       );
     }
-    return pais.culturasGastronomicas;
+
+    const cache = await this.cacheManager.set(
+      cacheKey,
+      pais.culturasGastronomicas,
+    );
+    return cache;
   }
 
   async associateCulturasGastronomicasPais(

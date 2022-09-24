@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { ProductoEntity } from '../producto/producto.entity';
 import { CategoriaEntity } from '../categoria/categoria.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -16,6 +17,9 @@ export class CategoriaProductoService {
 
     @InjectRepository(CategoriaEntity)
     private readonly categoriaRepository: Repository<CategoriaEntity>,
+
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
   ) {}
 
   async addProductoCategoria(
@@ -86,6 +90,13 @@ export class CategoriaProductoService {
   async findProductosByCategoriaId(
     categoriaId: string,
   ): Promise<ProductoEntity[]> {
+    const cacheKey = `categoria-productos-${categoriaId}`;
+    const cached: ProductoEntity[] = await this.cacheManager.get(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     const categoria: CategoriaEntity = await this.categoriaRepository.findOne({
       where: { id: categoriaId },
       relations: ['productos'],
@@ -96,7 +107,9 @@ export class CategoriaProductoService {
         BusinessError.NOT_FOUND,
       );
 
-    return categoria.productos;
+    const cache = categoria.productos;
+    await this.cacheManager.set(cacheKey, cache);
+    return cache;
   }
 
   async associateProductosCategoria(
