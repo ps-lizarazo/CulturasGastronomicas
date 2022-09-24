@@ -6,6 +6,7 @@ import { CategoriaEntity } from '../categoria/categoria.entity';
 import { ProductoEntity } from '../producto/producto.entity';
 import { faker } from '@faker-js/faker';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { CacheModule } from '@nestjs/common';
 
 describe('CategoriaProductoService', () => {
   let service: CategoriaProductoService;
@@ -16,7 +17,7 @@ describe('CategoriaProductoService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [...TypeOrmTestingConfig()],
+      imports: [...TypeOrmTestingConfig(), CacheModule.register()],
       providers: [CategoriaProductoService],
     }).compile();
 

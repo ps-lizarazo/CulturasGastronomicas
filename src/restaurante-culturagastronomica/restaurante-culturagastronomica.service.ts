@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
@@ -16,6 +17,8 @@ export class RestauranteCulturagastronomicaService {
 
     @InjectRepository(CulturaGastronomicaEntity)
     private readonly culturaGastronomicaRepository: Repository<CulturaGastronomicaEntity>,
+
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async associateCulturaGastronomicaRestaurante(
@@ -90,7 +93,15 @@ export class RestauranteCulturagastronomicaService {
     return restauranteCultura;
   }
 
-  async findCulturasGastronomicasInRestaurante(idRestaurante: string) {
+  async findCulturasGastronomicasInRestaurante(
+    idRestaurante: string,
+  ): Promise<CulturaGastronomicaEntity[]> {
+    const cacheKey = `restaurante-culturas-gastronomicas-${idRestaurante}`;
+    const cached: CulturaGastronomicaEntity[] = await this.cacheManager.get(
+      cacheKey,
+    );
+    if (cached) return cached;
+
     const restaurante = await this.restauranteRepository.findOne({
       where: { id: `${idRestaurante}` },
       relations: ['ciudad', 'culturasGastronomicas', 'estrellasMichelin'],
@@ -101,7 +112,10 @@ export class RestauranteCulturagastronomicaService {
         BusinessError.NOT_FOUND,
       );
     }
-    return restaurante.culturasGastronomicas;
+
+    const cache = restaurante.culturasGastronomicas;
+    await this.cacheManager.set(cacheKey, cache);
+    return cache;
   }
 
   async associateCulturasGastronomicasRestaurante(

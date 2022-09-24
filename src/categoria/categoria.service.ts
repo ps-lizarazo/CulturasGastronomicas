@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { CategoriaEntity } from './categoria.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -9,13 +10,29 @@ import {
 
 @Injectable()
 export class CategoriaService {
+  cacheKey = 'categorias';
+
   constructor(
     @InjectRepository(CategoriaEntity)
     private readonly categoriaRepository: Repository<CategoriaEntity>,
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
   ) {}
 
   async findAll(): Promise<CategoriaEntity[]> {
-    return await this.categoriaRepository.find({ relations: ['productos'] });
+    const cached: CategoriaEntity[] = await this.cacheManager.get<
+      CategoriaEntity[]
+    >(this.cacheKey);
+
+    if (!cached) {
+      const museums: CategoriaEntity[] = await this.categoriaRepository.find({
+        relations: ['productos'],
+      });
+      await this.cacheManager.set(this.cacheKey, museums);
+      return museums;
+    }
+
+    return cached;
   }
 
   async findOne(id: string): Promise<CategoriaEntity> {

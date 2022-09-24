@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   BusinessLogicException,
@@ -9,15 +10,24 @@ import { CiudadEntity } from './ciudad.entity';
 
 @Injectable()
 export class CiudadService {
+  cacheKey = 'ciudades';
+
   constructor(
     @InjectRepository(CiudadEntity)
     private readonly ciudadRepository: Repository<CiudadEntity>,
+    @Inject(CACHE_MANAGER)
+    private readonly cacheManager: Cache,
   ) {}
 
   async findAll(): Promise<CiudadEntity[]> {
-    return await this.ciudadRepository.find({
+    const cached = await this.cacheManager.get<CiudadEntity[]>(this.cacheKey);
+
+    if (cached) return cached;
+    const cache = await this.ciudadRepository.find({
       relations: ['pais', 'restaurantes'],
     });
+    await this.cacheManager.set(this.cacheKey, cache);
+    return cache;
   }
 
   async findOne(id: string): Promise<CiudadEntity> {

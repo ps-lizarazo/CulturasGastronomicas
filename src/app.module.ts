@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CategoriaModule } from './categoria/categoria.module';
@@ -17,7 +17,6 @@ import { EstrellasMichelinEntity } from './estrellas_michelin/estrellas_michelin
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { PaisModule } from './pais/pais.module';
 import { PaisCulturagastronomicaModule } from './pais-culturagastronomica/pais-culturagastronomica.module';
-import { CiudadRestauranteModule } from './ciudad-restaurante/ciudad-restaurante.module';
 import { CategoriaProductoModule } from './categoria-producto/categoria-producto.module';
 import { PaisEntity } from './pais/pais.entity';
 import { CiudadModule } from './ciudad/ciudad.module';
@@ -26,9 +25,18 @@ import { RecetaCulturaGastronomicaModule } from './receta-cultura_gastronomica/r
 import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import * as sqliteStore from 'cache-manager-sqlite';
 
 @Module({
   imports: [
+    CacheModule.register({
+      store: sqliteStore,
+      path: ':memory:',
+      options: {
+        ttl: 5,
+      },
+      isGlobal: true,
+    }),
     CategoriaModule,
     ProductoModule,
     CulturaGastronomicaModule,
@@ -39,7 +47,6 @@ import { AuthModule } from './auth/auth.module';
     CiudadModule,
     PaisCulturagastronomicaModule,
     RestauranteCulturagastronomicaModule,
-    CiudadRestauranteModule,
     RestauranteCiudadModule,
     CategoriaProductoModule,
     TypeOrmModule.forRoot({

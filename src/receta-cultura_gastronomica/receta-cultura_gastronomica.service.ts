@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { Cache } from 'cache-manager';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
 import { RecetaEntity } from '../receta/receta.entity';
@@ -16,6 +17,8 @@ export class RecetaCulturaGastronomicaService {
 
     @InjectRepository(RecetaEntity)
     private readonly recetaRepository: Repository<RecetaEntity>,
+
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   async addRecetaCulturaGastronomica(
@@ -86,6 +89,11 @@ export class RecetaCulturaGastronomicaService {
   async findRecetasByCulturaGastronomicaId(
     culturaGastronomicaId: string,
   ): Promise<RecetaEntity[]> {
+    const cacheKey = `recetas-cultura-gastronomica-${culturaGastronomicaId}`;
+    const cachedRecetas: RecetaEntity[] = await this.cacheManager.get(cacheKey);
+
+    if (cachedRecetas) return cachedRecetas;
+
     const culturaGastronomica: CulturaGastronomicaEntity =
       await this.culturaGastronomicaRepository.findOne({
         where: { id: culturaGastronomicaId },
@@ -97,7 +105,10 @@ export class RecetaCulturaGastronomicaService {
         BusinessError.NOT_FOUND,
       );
 
-    return culturaGastronomica.recetas;
+    const cache = culturaGastronomica.recetas;
+    await this.cacheManager.set(cacheKey, cache);
+
+    return cache;
   }
 
   async associateRecetasCulturaGastronomica(
