@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ProductoEntity {
+  id: String!
+  nombre: String!
+  descripcion: String!
+  historia: String!
+  categoria: CategoriaEntity!
+}
+
+type CategoriaEntity {
+  id: String!
+  nombre: String!
+  productos: [ProductoEntity!]!
+}
+
+type Query {
+  categorias: [CategoriaEntity!]!
+  categoria(id: String!): CategoriaEntity!
+}
+
+type Mutation {
+  createCategoria(categoria: CategoriaDto!): CategoriaEntity!
+  updateCategoria(id: String!, categoria: CategoriaDto!): CategoriaEntity!
+  deleteCategoria(id: String!): String!
+}
+
+input CategoriaDto {
+  nombre: String!
+}
