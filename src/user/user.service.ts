@@ -12,6 +12,14 @@ export class UserService {
       'consultorTodos',
       'eliminador',
     ]),
+    new User(6, 'usuarioConsultorReceta', '123456', ['consultorReceta']),
+    new User(7, 'usuarioConsultorProducto', '123456', ['consultorProducto']),
+    new User(8, 'usuarioConsultorCategoria', '123456', ['consultorCategoria']),
+    new User(9, 'usuarioConsultorPais', '123456', ['consultorPais']),
+    new User(10, 'usuarioConsultorCiudad', '123456', ['consultorCiudad']),
+    new User(11, 'usuarioConsultorEstrellaMichelin', '123456', [
+      'consultorEstrellaMichelin',
+    ]),
   ];
 
   async findOne(username: string): Promise<User | undefined> {
