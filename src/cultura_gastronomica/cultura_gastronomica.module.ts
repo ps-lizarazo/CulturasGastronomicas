@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CulturaGastronomicaEntity } from './cultura_gastronomica.entity';
-import { CulturaGastronomicaService } from './cultura_gastronomica.service';
-import { CulturaGastronomicaController } from './cultura_gastronomica.controller';
+import { PaisEntity } from '../pais/pais.entity';
+import { CulturaGastronomicaEntity } from '../cultura_gastronomica/cultura_gastronomica.entity';
+import { PaisCulturagastronomicaService } from './pais-culturagastronomica.service';
+import { PaisCulturagastronomicaController } from './pais-culturagastronomica.controller';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity])],
-  providers: [CulturaGastronomicaService],
-  controllers: [CulturaGastronomicaController],
+  imports: [TypeOrmModule.forFeature([PaisEntity, CulturaGastronomicaEntity])],
+  providers: [PaisCulturagastronomicaService],
+  controllers: [PaisCulturagastronomicaController],
 })
-export class CulturaGastronomicaModule {}
+export class PaisCulturagastronomicaModule {}

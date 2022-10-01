@@ -26,6 +26,9 @@ import { RestauranteCiudadModule } from './restaurante-ciudad/restaurante-ciudad
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import * as sqliteStore from 'cache-manager-sqlite';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
+import { ApolloDriver } from '@nestjs/apollo';
 
 @Module({
   imports: [
@@ -36,6 +39,11 @@ import * as sqliteStore from 'cache-manager-sqlite';
         ttl: 5,
       },
       isGlobal: true,
+      
+    }),
+    GraphQLModule.forRoot({
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      driver: ApolloDriver
     }),
     CategoriaModule,
     ProductoModule,
@@ -54,7 +62,7 @@ import * as sqliteStore from 'cache-manager-sqlite';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'postgres',
+      password: 'asdfgh',
       database: 'cultura_gastronomica',
       entities: [
         CategoriaEntity,

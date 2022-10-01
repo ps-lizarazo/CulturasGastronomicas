@@ -20,10 +20,11 @@ export class PaisEntity {
   @Column()
   nombre: string;
 
-  @Field(() => [CiudadEntity])
+  @Field(type => [CiudadEntity])
   @OneToMany(() => CiudadEntity, (ciudad) => ciudad.pais)
   ciudades: CiudadEntity[];
 
+  @Field(type => [CulturaGastronomicaEntity])
   @ManyToMany(() => CulturaGastronomicaEntity, (cultura) => cultura.paises)
   culturasGastronomicas: CulturaGastronomicaEntity[];
 }

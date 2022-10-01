@@ -23,16 +23,18 @@ export class RestauranteEntity {
   @Column()
   nombre: string;
 
+  @Field()
   @ManyToOne(() => CiudadEntity, (ciudad) => ciudad.restaurantes)
   ciudad: CiudadEntity;
 
-  @Field(() => [EstrellasMichelinEntity])
+  @Field(type => [EstrellasMichelinEntity])
   @OneToMany(
     () => EstrellasMichelinEntity,
     (estrellaMichellin) => estrellaMichellin.restaurante,
   )
   estrellasMichelin: EstrellasMichelinEntity[];
 
+  @Field(type => [CulturaGastronomicaEntity])
   @ManyToMany(
     () => CulturaGastronomicaEntity,
     (culturaGastronomica) => culturaGastronomica.restaurantes,
