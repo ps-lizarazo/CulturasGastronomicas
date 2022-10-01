@@ -23,7 +23,7 @@ export class RestauranteEntity {
   @Column()
   nombre: string;
 
-  @Field()
+  @Field(type => CiudadEntity)
   @ManyToOne(() => CiudadEntity, (ciudad) => ciudad.restaurantes)
   ciudad: CiudadEntity;
 
