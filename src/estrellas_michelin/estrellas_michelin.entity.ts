@@ -13,7 +13,7 @@ export class EstrellasMichelinEntity {
   @Column()
   fechaConsecucion: Date;
 
-  @Field(type => RestauranteEntity)
+  @Field(() => RestauranteEntity)
   @ManyToOne(
     () => RestauranteEntity,
     (restaurante) => restaurante.estrellasMichelin,
