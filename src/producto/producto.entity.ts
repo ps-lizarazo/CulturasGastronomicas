@@ -34,6 +34,7 @@ export class ProductoEntity {
   @ManyToOne(() => CategoriaEntity, (categoria) => categoria.productos)
   categoria: CategoriaEntity;
 
+  @Field(type => [CulturaGastronomicaEntity])
   @ManyToMany(
     () => CulturaGastronomicaEntity,
     (culturaGastronomica) => culturaGastronomica.productos,
