@@ -73,37 +73,32 @@ type CategoriaEntity {
 type Query {
   categorias: [CategoriaEntity!]!
   categoria(id: String!): CategoriaEntity!
-  culturasGastronomicas: [CulturaGastronomicaEntity!]!
-  culturasGastronomica(id: String!): CulturaGastronomicaEntity!
-  recetas: [RecetaEntity!]!
-  receta(id: String!): RecetaEntity!
+  restaurantes: [RestauranteEntity!]!
+  restaurante(id: String!): RestauranteEntity!
+  paises: [PaisEntity!]!
+  pais(id: String!): PaisEntity!
 }
 
 type Mutation {
   createCategoria(categoria: CategoriaDto!): CategoriaEntity!
   updateCategoria(id: String!, categoria: CategoriaDto!): CategoriaEntity!
   deleteCategoria(id: String!): String!
-  createCulturaGastronomica(culturaGastronomica: CulturaGastronomicaDto!): CulturaGastronomicaEntity!
-  updateCulturaGastronomica(id: String!, culturaGastronomica: CulturaGastronomicaDto!): CulturaGastronomicaEntity!
-  deleteCulturaGastronomica(id: String!): String!
-  createReceta(receta: RecetaDto!): RecetaEntity!
-  updateReceta(id: String!, receta: RecetaDto!): RecetaEntity!
-  deleteReceta(id: String!): String!
+  createRestaurante(restaurante: RestauranteDto!): RestauranteEntity!
+  updateRestaurante(id: String!, restaurante: RestauranteDto!): RestauranteEntity!
+  deleteRestaurante(id: String!): String!
+  createPais(pais: PaisDto!): PaisEntity!
+  updatePais(id: String!, pais: PaisDto!): PaisEntity!
+  deletePais(id: String!): String!
 }
 
 input CategoriaDto {
   nombre: String!
 }
 
-input CulturaGastronomicaDto {
+input RestauranteDto {
   nombre: String!
-  descripcion: String!
 }
 
-input RecetaDto {
+input PaisDto {
   nombre: String!
-  descripcion: String!
-  imageUrl: String!
-  preparacion: String!
-  preparacionUrl: String!
 }

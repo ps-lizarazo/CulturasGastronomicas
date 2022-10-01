@@ -9,7 +9,7 @@ export class PaisResolver {
   constructor(private paisService: PaisService) {}
 
   @Query(() => [PaisEntity])
-  paiss(): Promise<PaisEntity[]> {
+  paises(): Promise<PaisEntity[]> {
     return this.paisService.findAll();
   }
 
