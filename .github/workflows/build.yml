@@ -13,6 +13,21 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Setup Nest
+        uses: actions/setup-node@v2.4.0
+        with:
+          check-latest: true
+      - name: Instalacion dependencias
+        run: |
+          npm install -g @nestjs/cli
+          npm install
+      - name: Placeholder para testear y desplegar
+        run: |
+          echo Node is installed,
+          echo Angular is installed,
+          echo Ready to test and deploy your project.
+      - name: Nest Testing
+        run: npm run test:watch
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
