@@ -73,4 +73,27 @@ export class PaisService {
 
     await this.paisRepository.remove(pais);
   }
+
+  async newFunction(): Promise<string> {
+    console.log("newFunction")
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    return "newFunction"
+  }
 }
