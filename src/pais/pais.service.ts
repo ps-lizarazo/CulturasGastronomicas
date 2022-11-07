@@ -96,4 +96,27 @@ export class PaisService {
     }
     return "newFunction"
   }
+
+  async anotherBadFunction(): Promise<string> {
+    console.log("newFunction")
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    for (let i = 0; i < 10; i++) {
+      console.log(i);
+    }
+    return "newFunction"
+  }
 }
